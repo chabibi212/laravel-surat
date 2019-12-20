@@ -1,0 +1,26 @@
+language: php
+
+php:
+  - 7.3
+
+services:
+  - mysql
+
+addons:
+  chrome: stable
+
+install:
+  - cp .env.testing .env
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  - php artisan key:generate
+
+before_script:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - mysql -e 'create database suratapp;'
+  - php artisan dusk:update --detect
+  - php artisan migrate
+  - php artisan db:seed
+  - php artisan serve &
+
+script:
+  - php artisan dusk
