@@ -55,7 +55,7 @@
                         />
                         <div class="form-group">
                             <label for="email">
-                                email
+                                NIP
                             </label>
                             <input
                                 type="text"
