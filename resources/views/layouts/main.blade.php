@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width">
     <link
         rel="stylesheet"
-        href="/assets/css/bootstrap.css"
+        href="{{ url('/assets/css/bootstrap.css') }}"
     />
     <link
         rel="stylesheet"
-        href="/assets/font-awesome/css/all.css"
+        href="{{ url('/assets/font-awesome/css/all.css') }}"
     />
     <link
         rel="stylesheet"
@@ -46,11 +46,11 @@
 
     <script
         type="text/javascript"
-        src="/assets/js/jquery-3.3.1.js"
+        src="{{ url('/assets/js/jquery-3.3.1.js') }}"
     ></script>
     <script
         type="text/javascript"
-        src="/assets/js/bootstrap.js"
+        src="{{ url('/assets/js/bootstrap.js') }}"
     ></script>
 
     <!-- custom different javascript in every module -->

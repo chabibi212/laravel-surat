@@ -31,7 +31,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                     </div>
                 @endif
                 <p>
-                    <a href="/unit/form-tambah" class="btn btn-primary">
+                    <a href="{{ url('/unit/form-tambah') }}" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Tambah unit
                     </a>
                 </p>
@@ -63,13 +63,13 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                                     </td>
                                     <td>
                                         <a
-                                            href="/unit/form-ubah/{{ $item->id }}"
+                                            href="{{ url('/unit/form-ubah/'.$item->id) }}"
                                             class="btn btn-sm btn-warning text-white"
                                         >
                                             <i class="fa fa-edit"></i> Ubah
                                         </a>
                                         <a
-                                            href="/unit/hapus/{{ $item->id }}"
+                                            href="{{ url('/unit/hapus/'.$item->id) }}"
                                             class="btn btn-sm btn-danger"
                                             onclick="event.preventDefault();
                                             document.getElementById('delete-form-{{ $item->id }}').submit();"
@@ -78,7 +78,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                                         </a>
                                         <form
                                             id="delete-form-{{ $item->id }}"
-                                            action="/unit/hapus/{{ $item->id }}"
+                                            action="{{ url('/unit/hapus/'.$item->id) }}"
                                             method="post"
                                             style="display: none;"
                                         >

@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width">
     <link
         rel="stylesheet"
-        href="/assets/css/bootstrap.css"
+        href="{{ url('/assets/css/bootstrap.css') }}"
     />
     <link
         rel="stylesheet"
-        href="/assets/font-awesome/css/all.css"
+        href="{{ url('/assets/font-awesome/css/all.css') }}"
     />
     <link
         rel="stylesheet"
@@ -42,7 +42,7 @@
                     </h3>
                     <hr />
                     <!-- card content -->
-                    <form method="post" action="/autentikasi/login">
+                    <form method="post" action="{{ url('autentikasi/login') }}">
                         @if($errors->has('notification'))
                             <p class="text-danger">
                                 {{ $errors->first('notification') }}
@@ -94,9 +94,9 @@
                             <i class="fa fa-sign-in-alt"></i> Masuk
                         </button>
                         &nbsp;
-                        <a href="#">
+                        <!-- <a href="#">
                             Lupa kata sandi?
-                        </a>
+                        </a> -->
                         </p>
                     </form>
                   </div>

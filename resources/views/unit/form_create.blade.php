@@ -14,7 +14,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                     Tambah unit
                 </h3>
                 <hr />
-                <form action="/unit/simpan" method="post">
+                <form action="{{ url('/unit/simpan') }}" method="post">
                     <input
                         type="hidden"
                         name="_token"
