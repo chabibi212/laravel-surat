@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             'as' => 'unit.delete'
         ]);
     });
-    Route::group(['prefix' => 'Kategori',], function() {
+    Route::group(['prefix' => 'kategori',], function() {
         Route::group(['middleware' => 'role-super-admin'], function(){
             Route::get('/', [
                 'uses' => 'KategoriController@index',

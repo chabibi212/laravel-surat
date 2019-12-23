@@ -11,7 +11,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    kategori
+                    Kategori
                 </h3>
                 <hr />
                 @if(session('notification'))
@@ -31,7 +31,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                     </div>
                 @endif
                 <p>
-                    <a href="/kategori/form-tambah" class="btn btn-primary">
+                    <a href="{{ url('/kategori/form-tambah') }}" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Tambah kategori
                     </a>
                 </p>
@@ -40,7 +40,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                         <thead>
                             <tr>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Opsi</th>
+                                <th scope="col" width="200">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,13 +49,13 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                     <td>{{ $item->nama }}</td>
                                     <td>
                                         <a
-                                            href="/kategori/form-ubah/{{ $item->id }}"
+                                            href="{{ url('/kategori/form-ubah/'.$item->id) }}"
                                             class="btn btn-sm btn-warning text-white"
                                         >
                                             <i class="fa fa-edit"></i> Ubah
                                         </a>
                                         <a
-                                            href="/kategori/hapus/{{ $item->id }}"
+                                            href="{{ url('/kategori/hapus/'.$item->id) }}"
                                             class="btn btn-sm btn-danger"
                                             onclick="event.preventDefault();
                                             document.getElementById('delete-form').submit();"
@@ -64,7 +64,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                         </a>
                                         <form
                                             id="delete-form"
-                                            action="/kategori/hapus/{{ $item->id }}"
+                                            action="{{ url('/kategori/hapus/'. $item->id) }}"
                                             method="post"
                                             style="display: none;"
                                         >

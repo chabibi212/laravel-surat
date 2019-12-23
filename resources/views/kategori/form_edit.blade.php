@@ -14,7 +14,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                     Ubah kategori
                 </h3>
                 <hr />
-                <form action="/kategori/ubah/{{ $kategori->id }}" method="post">
+                <form action="{{ url('/kategori/ubah/'. $kategori->id) }}" method="post">
                     <input
                         type="hidden"
                         name="_token"
@@ -29,7 +29,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="nama">
-                                    Nama
+                                    Nama *
                                 </label>
                                 <input
                                     type="text"

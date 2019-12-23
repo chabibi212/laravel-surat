@@ -11,7 +11,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    unit
+                    Unit
                 </h3>
                 <hr />
                 @if(session('notification'))
@@ -41,8 +41,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                             <tr>
                                 <th scope="col">Kode</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Posisi</th>
-                                <th scope="col">Opsi</th>
+                                <th scope="col" width="200">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,17 +49,6 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                                 <tr>
                                     <td>{{ $item->kode }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>
-                                        @if($item->posisi == "Pimpinan")
-                                            <span class="badge badge-success">
-                                                Pimpinan
-                                            </span>
-                                        @else
-                                            <span class="badge badge-dark">
-                                                Non-pimpinan
-                                            </span>
-                                        @endif
-                                    </td>
                                     <td>
                                         <a
                                             href="{{ url('/unit/form-ubah/'.$item->id) }}"

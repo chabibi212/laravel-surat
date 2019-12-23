@@ -7,7 +7,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
 @section('css')
 <link
     rel="stylesheet"
-    href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css"
+    href="{{ url('/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}"
 />
 @endsection
 
@@ -18,11 +18,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Tambah surat masuk
+                    Tambah dokumen
                 </h3>
                 <hr />
                 <form
-                    action="/surat-masuk/simpan"
+                    action="{{ url('/surat-masuk/simpan') }}"
                     method="post"
                     enctype="multipart/form-data"
                 >
@@ -104,51 +104,64 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     </span>
                                 @endif
                             </div>
-                    <div class="form-group">
+                        </div>
+                    </div>
+                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tujuan-bagian">
-                                    Tujuan Unit *
+                                <label for="tahap_id">
+                                    Tahap *
                                 </label>
                                 <select
-                                    name="unit_id"
-                                    id="tujuan-bagian"
-                                    class="form-control {{ $errors->has('unit_id') ? ' is-invalid' : '' }}"
+                                    name="tahap_id"
+                                    id="tahap_id"
+                                    class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
                                     <option value="">
-                                        --- Pilih Unit ---
+                                        --- Pilih Tahap ---
                                     </option>
-                                    @foreach($unit as $item)
-                                        <option value="{{ $item->id }}">
-                                            {{ $item->nama }}
-                                        </option>
-                                    @endforeach
+                                    <option value="Tahap 1">
+                                        Tahap 1
+                                    </option>
+                                    <option value="Tahap 2">
+                                        Tahap 3
+                                    </option>
+                                    <option value="Tahap 3">
+                                        Tahap 3
+                                    </option>
                                 </select>
-                                @if($errors->has('unit_id'))
+                                @if($errors->has('kategori_id'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('unit_id') }}</strong>
+                                        <strong>{{ $errors->first('kategori_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tujuan">
-                                    Tujuan *
+                                <label for="tahap_id">
+                                    Status *
                                 </label>
                                 <select
-                                    name="pengguna_id"
-                                    class="form-control {{ $errors->has('pengguna_id') ? ' is-invalid' : '' }}"
-                                    id="tujuan"
-                                    readonly
+                                    name="tahap_id"
+                                    id="tahap_id"
+                                    class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
                                     <option value="">
-                                        --- Pilih Bagian Terlebih Dahulu ---
+                                        --- Pilih Status ---
+                                    </option>
+                                    <option value="Valid">
+                                        Valid
+                                    </option>
+                                    <option value="Invalid">
+                                        Invalid
                                     </option>
                                 </select>
-                                @if($errors->has('pengguna_id'))
+                                @if($errors->has('kategori_id'))
                                     <span class="invalid-feedback">
-                                        <strong>
-                                            {{ $errors->first('pengguna_id') }}
-                                        </strong>
+                                        <strong>{{ $errors->first('kategori_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -292,11 +305,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
 @section('js')
 <script
     type="text/javascript"
-    src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"
+    src="{{ url('/assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"
 ></script>
 <script
     type="text/javascript"
-    src="/assets/bootstrap-datepicker/locales/bootstrap-datepicker.id.min.js"
+    src="{{ url('/assets/bootstrap-datepicker/locales/bootstrap-datepicker.id.min.js') }}"
 ></script>
 <script type="text/javascript">
     $('#tujuan-bagian').click(function(){

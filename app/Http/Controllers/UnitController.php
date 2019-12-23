@@ -48,7 +48,7 @@ class UnitController extends Controller
         $unitData = [
             'kode' => $kode,
             'nama' => $nama,
-            'posisi' => $posisi
+            'posisi' => ''
         ];
 
         $storeunit = unit::create($unitData);
@@ -101,7 +101,7 @@ class UnitController extends Controller
         $unitData = [
             'kode' => $kode,
             'nama' => $nama,
-            'posisi' => $posisi
+            'posisi' => ''
         ];
 
         $updateunit = unit::where('id', $id)

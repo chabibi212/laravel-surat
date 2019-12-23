@@ -14,7 +14,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                     Tambah Pengguna
                 </h3>
                 <hr />
-                <form action="/pengguna/simpan" method="post">
+                <form action="{{ url('/pengguna/simpan') }}" method="post">
                     <input
                         type="hidden"
                         name="_token"
@@ -24,7 +24,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="email">
-                                    Email
+                                    NIP
                                 </label>
                                 <input
                                     type="text"
@@ -63,41 +63,21 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="nip">
-                                    NIP
-                                </label>
-                                <input
-                                    type="text"
-                                    name="nip"
-                                    class="form-control {{ $errors->has('nip') ? ' is-invalid' : '' }}"
-                                    value="{{ old('nip') }}"
-                                />
-                                @if($errors->has('nip'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('nip') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="role">
-                                    Role
+                                    Hak Akses
                                 </label>
                                 <select name="role" class="form-control">
                                     <option
-                                        value="Super Admin"
-                                        {{ old('role') == 'Super Admin' ? 'selected' : '' }}
-                                    >
-                                        Super Admin
+                                        value="Super Admin">
+                                        Administrator
                                     </option>
                                     <option
-                                        value="Sekretaris"
-                                        {{ old('role') == 'Sekretaris' ? 'selected' : '' }}
-                                    >
-                                        Sekretaris
+                                        value="Viewer">
+                                        Viewer
+                                    </option>
+                                    <option
+                                        value="Staf">
+                                        Staf
                                     </option>
                                 </select>
                             </div>
@@ -107,7 +87,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="unit-id">
-                                    unit
+                                    Unit
                                 </label>
                                 <select name="unit_id" class="form-control">
                                     @foreach($unit as $item)

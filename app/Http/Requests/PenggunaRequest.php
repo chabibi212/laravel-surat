@@ -26,13 +26,13 @@ class PenggunaRequest extends FormRequest
         switch($this->method()) {
             case 'POST':
                 return [
-                    'email' => 'required|email|unique:pengguna,email,'.$this->id,
+                    'email' => 'required|unique:pengguna'.$this->id,
                     'password' => 'required',
                     'password_confirmation' => 'required|same:password'
                 ];
             case 'PUT':
                 return [
-                    'email' => 'required|email|unique:pengguna,email,'.$this->id,
+                    'email' => 'required|email|unique:pengguna,'.$this->id,
                     'password_confirmation' => 'same:password'
                 ];
             default:break;
@@ -48,7 +48,6 @@ class PenggunaRequest extends FormRequest
     {
         return [
             'email.required' => 'Email perlu diisi!',
-            'email.email' => 'Format email tidak sesuai!',
             'email.unique' => 'Email sudah ada!',
             'password.required' => 'Password perlu diisi!',
             'password_confirmation.required' => 'Konfirmasi password perlu diisi!',

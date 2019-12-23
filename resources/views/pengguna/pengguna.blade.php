@@ -31,7 +31,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                     </div>
                 @endif
                 <p>
-                    <a href="/pengguna/form-tambah" class="btn btn-primary">
+                    <a href="{{ url('/pengguna/form-tambah') }}" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Tambah pengguna
                     </a>
                 </p>
@@ -39,10 +39,10 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">email</th>
                                 <th scope="col">NIP</th>
                                 <th scope="col">Nama Lengkap</th>
-                                <th scope="col">Role</th>
+                                <th scope="col">Unit</th>
+                                <th scope="col">Hak Akses</th>
                                 <th scope="col">Opsi</th>
                             </tr>
                         </thead>
@@ -50,30 +50,23 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                             @foreach($pengguna as $item)
                                 <tr>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->nip }}</td>
                                     <td>{{ $item->nama }}</td>
-
+                                    <td>{{ $item->unit }}</td>
                                     <td>
-                                        @if($item->role == 'Super Admin')
-                                            <span class="badge badge-success">
-                                                {{ $item->role }}
-                                            </span>
-                                        @else
-                                            <span class="badge badge-info">
-                                                {{ $item->role }}
-                                            </span>
-                                        @endif
+                                        <span class="badge badge-success">
+                                            {{ $item->role }}
+                                        </span>
                                     </td>
 
                                     <td>
                                         <a
-                                            href="/pengguna/form-ubah/{{ $item->id }}"
+                                            href="{{ url('/pengguna/form-ubah/'. $item->id) }}"
                                             class="btn btn-sm btn-warning text-white"
                                         >
                                             <i class="fa fa-edit"></i> Ubah
                                         </a>
                                         <a
-                                            href="/pengguna/hapus/{{ $item->id }}"
+                                            href="{{ url('/pengguna/hapus/{'. $item->id) }}"
                                             class="btn btn-sm btn-danger"
                                             onclick="event.preventDefault();
                                             document.getElementById('delete-form').submit();"
@@ -82,7 +75,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                         </a>
                                         <form
                                             id="delete-form"
-                                            action="/pengguna/hapus/{{ $item->id }}"
+                                            action="{{ url('/pengguna/hapus/'. $item->id) }}"
                                             method="post"
                                             style="display: none;"
                                         >

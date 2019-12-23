@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
 use App\Models\kategori;
-use Faker\Factory as Faker;
 use Illuminate\Http\Request;
 use App\Http\Requests\kategoriRequest;
 
@@ -23,6 +22,11 @@ class KategoriController extends Controller
         return view('kategori.kategori', compact('kategori'));
     }
 
+    public function create()
+    {
+        return view('kategori.form_create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -31,8 +35,6 @@ class KategoriController extends Controller
      */
     public function store(kategoriRequest $kategoriRequest)
     {
-        # set faker
-        $faker = Faker::create();
 
         # set variable
         $nama = $kategoriRequest->nama;
@@ -120,16 +122,5 @@ class KategoriController extends Controller
             ->with([
                 'notification' => 'Data berhasil dihapus!'
             ]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-        return response()
-            ->json($kategori);
     }
 }

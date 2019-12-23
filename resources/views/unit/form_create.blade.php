@@ -11,7 +11,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Tambah unit
+                    Tambah Unit
                 </h3>
                 <hr />
                 <form action="{{ url('/unit/simpan') }}" method="post">
@@ -57,27 +57,6 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                                         <strong>{{ $errors->first('nama') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="posisi">
-                                    Posisi
-                                </label>
-                                <select
-                                    name="posisi"
-                                    class="form-control"
-                                    id="posisi"
-                                >
-                                    <option value="Pimpinan">
-                                        Pimpinan
-                                    </option>
-                                    <option value="Non-pimpinan">
-                                        Non-pimpinan
-                                    </option>
-                                </select>
                             </div>
                         </div>
                     </div>

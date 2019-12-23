@@ -11,7 +11,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Surat Masuk
+                    Dokumen
                 </h3>
                 <hr />
                 @if(session('notification'))
@@ -31,8 +31,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                     </div>
                 @endif
                 <p>
-                    <a href="/surat-masuk/form-tambah" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah surat masuk
+                    <a href="{{ url('/surat-masuk/form-tambah') }}" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Tambah Dokumen
                     </a>
                 </p>
                 <div class="table-responsive">
@@ -41,11 +41,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             <tr>
                                 <th scope="col">Nomor</th>
                                 <th scope="col">Asal</th>
-                                <th scope="col">Tujuan</th>
+                                <th scope="col">Tanggal Diterima</th>
+                                <th scope="col">Tanggal Surat</th>
                                 <th scope="col">Perihal</th>
                                 <th scope="col">Kategori</th>
-                                <th scope="col">Tanggal Surat</th>
-                                <th scope="col">Tanggal Diterima</th>
+                                <th scope="col">Tahap</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Opsi</th>
                             </tr>

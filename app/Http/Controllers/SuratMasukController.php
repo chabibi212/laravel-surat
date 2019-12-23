@@ -45,8 +45,10 @@ class SuratMasukController extends Controller
     public function create()
     {
         $unit = unit::all();
+        $kategori = kategori::orderBy('nama', 'desc')
+            ->get();
 
-        return view('surat_masuk.form_create', compact('unit'));
+        return view('surat_masuk.form_create', compact('unit', 'kategori'));
     }
 
     /**

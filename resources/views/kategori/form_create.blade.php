@@ -14,7 +14,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                     Tambah kategori
                 </h3>
                 <hr />
-                <form action="/kategori/simpan" method="post">
+                <form action="{{ url('/kategori/simpan') }}" method="post">
                     <input
                         type="hidden"
                         name="_token"
@@ -24,7 +24,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="nama">
-                                    Nama
+                                    Nama *
                                 </label>
                                 <input
                                     type="text"
@@ -40,6 +40,12 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
+                    <hr />
+                    <p>
+                        <code>
+                            Label bertanda (*) wajib diisi atau dipilih
+                        </code>
+                    </p>
                     <button type="submit" class="btn btn-primary">
                         Simpan
                     </button>

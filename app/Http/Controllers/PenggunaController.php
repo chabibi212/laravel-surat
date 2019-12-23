@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use App\Http\Requests\PenggunaRequest;
@@ -28,7 +29,9 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        return view('pengguna.form_create');
+        $unit = unit::orderBy('nama', 'desc')
+            ->get();
+        return view('pengguna.form_create')->with('unit', $unit);
     }
 
     /**
@@ -41,7 +44,7 @@ class PenggunaController extends Controller
     {
         # set variable
         $email = $penggunaRequest->email;
-        $nip = $penggunaRequest->nip;
+        $nip = '-';
         $nama = $penggunaRequest->nama;
         $password = $penggunaRequest->password;
         $unitID= $penggunaRequest->unit_id;
@@ -89,8 +92,10 @@ class PenggunaController extends Controller
         $checkPengguna = Pengguna::findOrFail($id);
 
         $pengguna = Pengguna::find($id);
+        $unit = unit::orderBy('nama', 'desc')
+            ->get();
 
-        return view('pengguna.form_edit', compact('pengguna'));
+        return view('pengguna.form_edit', compact('pengguna'))->with('unit', $unit);
     }
 
     /**

@@ -25,8 +25,6 @@ class SuratMasukRequest extends FormRequest
     {
         return [
             'asal' => 'required',
-            'jabatan_id' => 'required',
-            'pegawai_id' => 'required',
             'perihal' => 'required',
             'tanggal_terima' => 'required',
             'lampiran' => 'mimes:pdf'
