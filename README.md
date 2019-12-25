@@ -36,16 +36,9 @@ Pada manajemen surat masuk dan surat keluar terdapat 2 pengguna yaitu :
 Super Admin berfungsi sebagai pengatur semua data yang ada pada aplikasi, super admin bisa mengelola data jabatan, pegawai, surat masuk, dan surat keluar
 Akun :
 
-    email : superadmin@mail.com
+    nip : 7281728192
     password : secret
 
-
-### Sekretaris
-Sekretaris berfungsi sebagai seorang yang mengarsipkan surat masuk dan surat keluar pada aplikasi
-Akun :
-
-    email : sekretaris@mail.com
-    password : secret
 
 <BIBOB212/># laravel-arsip
 # laravel-pengarsipan
