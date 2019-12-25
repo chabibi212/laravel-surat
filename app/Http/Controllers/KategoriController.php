@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jabatan;
-use App\Models\kategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
-use App\Http\Requests\kategoriRequest;
+use App\Http\Requests\KategoriRequest;
 
 class KategoriController extends Controller
 {
@@ -38,7 +37,6 @@ class KategoriController extends Controller
 
         # set variable
         $nama = $kategoriRequest->nama;
-        $nomorTelepon = $kategoriRequest->nomor_telepon;
       
 
         # set array kategori data
@@ -48,7 +46,7 @@ class KategoriController extends Controller
         ];
 
         # store
-        $storekategori = kategori::create($kategoriData);
+        $storekategori = Kategori::create($kategoriData);
 
         # return to kategori
         return redirect('/kategori')

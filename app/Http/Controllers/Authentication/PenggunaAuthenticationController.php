@@ -24,11 +24,11 @@ class PenggunaAuthenticationController extends Controller
         PenggunaAuthenticationRequest $penggunaAuthenticationRequest
     ) {
         # code...
-        $email = $penggunaAuthenticationRequest->email;
+        $nip = $penggunaAuthenticationRequest->nip;
         $password = $penggunaAuthenticationRequest->password;
 
         $dataLogin = [
-            'email' => $email,
+            'nip' => $nip,
             'password' => $password
         ];
 
@@ -39,7 +39,7 @@ class PenggunaAuthenticationController extends Controller
 
         return redirect('/autentikasi/form-login')
             ->withErrors([
-                'notification' => 'Akun tidak ditemukan! Periksa kembali email atau kata sandi.'
+                'notification' => 'Akun tidak ditemukan! Periksa kembali nip atau kata sandi.'
             ]);
     }
 

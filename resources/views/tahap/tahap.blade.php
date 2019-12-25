@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
+Dashboard &raquo; tahap | Aplikasi Manajemen Surat
 @endsection
 
 @section('content')
@@ -11,12 +11,12 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Dokumen
+                    tahap
                 </h3>
                 <hr />
                 @if(session('notification'))
                     <div
-                        class="alert alert-{{ session('status') }} alert-dismissible fade show"
+                        class="alert alert-success alert-dismissible fade show"
                         role="alert"
                     >
                         {{ session('notification') }}
@@ -31,59 +31,31 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                     </div>
                 @endif
                 <p>
-                    <a href="{{ url('/surat-masuk/form-tambah') }}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah Dokumen
+                    <a href="{{ url('/tahap/form-tambah') }}" class="btn btn-primary">
+                        <i class="fa fa-plus"></i> Tambah tahap
                     </a>
                 </p>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Nomor</th>
-                                <th scope="col">Asal</th>
-                                <th scope="col">Tanggal Diterima</th>
-                                <th scope="col">Tanggal Surat</th>
-                                <th scope="col">Perihal</th>
-                                <th scope="col">Kategori</th>
-                                <th scope="col">Tahap</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Opsi</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col" width="200">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($suratMasuk as $item)
+                            @foreach($tahap as $item)
                                 <tr>
-                                    <td>{{ $item->nomor }}</td>
-                                    <td>{{ $item->asal }}</td>
-                                    <td>{{ $item->tanggal_terima->formatLocalized('%d %B %Y') }}</td>
-                                    <td>{{ $item->tanggal_surat->formatLocalized('%d %B %Y') }}</td>
-                                    <td>{{ $item->perihal }}</td>
-                                    <td>{{ $item->kategori ->nama }}</td>
-                                    <td>{{ $item->tahap ->nama }}</td>
-                                   
+                                    <td>{{ $item->nama }}</td>
                                     <td>
-                                        @if($item->status == 'Valid')
-                                            <span
-                                                class="badge badge-success"
-                                            >
-                                                {{ $item->Valid}}
-                                            </span>
-                                        @else
-                                            <span
-                                                class="badge badge-warning text-white"
-                                            >
-                                                {{ $item->status == 'Invalid' }}
-                                            </span>
-                                        @endif
-                                    </td>
                                         <a
-                                            href="/surat-masuk/form-ubah/{{ $item->id }}"
+                                            href="{{ url('/tahap/form-ubah/'.$item->id) }}"
                                             class="btn btn-sm btn-warning text-white"
                                         >
                                             <i class="fa fa-edit"></i> Ubah
                                         </a>
                                         <a
-                                            href="/surat-masuk/hapus/{{ $item->id }}"
+                                            href="{{ url('/tahap/hapus/'.$item->id) }}"
                                             class="btn btn-sm btn-danger"
                                             onclick="event.preventDefault();
                                             document.getElementById('delete-form').submit();"
@@ -92,7 +64,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         </a>
                                         <form
                                             id="delete-form"
-                                            action="/surat-masuk/hapus/{{ $item->id }}"
+                                            action="{{ url('/tahap/hapus/'. $item->id) }}"
                                             method="post"
                                             style="display: none;"
                                         >
@@ -112,7 +84,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $suratMasuk->links() }}
+                    {{ $tahap->links() }}
                 </div>
               </div>
             </div>

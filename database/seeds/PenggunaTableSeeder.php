@@ -17,7 +17,6 @@ class PenggunaTableSeeder extends Seeder
         $createPengguna = DB::table('pengguna')
             ->insert([
                 [
-                    'email' => 'superadmin@mail.com',
                     'nama'=>'bayu',
                     'nip'=>'7281728192',
                     'password' => bcrypt('secret'),

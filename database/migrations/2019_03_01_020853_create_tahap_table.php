@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePenggunaTable extends Migration
+class CreateTahapTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreatePenggunaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengguna', function (Blueprint $table) {
+        Schema::create('tahap', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nip',10);
-            $table->string('nama',150);
-            $table->string('password', 150);
-            $table->string('unit_id');
-            $table->string('role', 75);
+            $table->string('nama', 150);
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreatePenggunaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengguna');
+        Schema::dropIfExists('tahap');
     }
 }

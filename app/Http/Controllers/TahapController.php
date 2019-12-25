@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unit;
+use App\Models\Tahap;
 use Illuminate\Http\Request;
-use App\Http\Requests\UnitRequest;
+use App\Http\Requests\TahapRequest;
 
-class UnitController extends Controller
+class TahapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +15,15 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $unit = Unit::orderByCreatedAtDesc()
+        $tahap = Tahap::orderByCreatedAtDesc()
             ->paginate(5);
 
-        return view('unit.unit', compact('unit'));
+        return view('tahap.tahap', compact('tahap'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('unit.form_create');
+        return view('tahap.form_create');
     }
 
     /**
@@ -37,23 +32,27 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UnitRequest $UnitRequest)
+    public function store(TahapRequest $TahapRequest)
     {
-        # set variable
-        $kode = $unitRequest->kode;
-        $nama = $unitRequest->nama;
-        $posisi = $unitRequest->posisi;
 
-        # set data array
-        $unitData = [
-            'kode' => $kode,
+        # set variable
+        $nama = $tahapRequest->nama;
+      
+
+        # set array tahap data
+        $tahapData = [
             'nama' => $nama,
-            'posisi' => ''
+            
         ];
 
-        $storeunit = Unit::create($unitData);
+        # store
+        $storetahap = Tahap::create($tahapData);
 
-        return redirect('/unit');
+        # return to tahap
+        return redirect('/tahap')
+            ->with([
+                'notification' => 'Data berhasil disimpan!'
+            ]);
     }
 
     /**
@@ -75,10 +74,10 @@ class UnitController extends Controller
      */
     public function edit($id)
     {
-        # check unit and get unit data if exist
-        $unit = unit::findOrFail($id);
+        $checktahapData = tahap::findOrFail($id);
+        $tahap = $checktahapData;
 
-        return view('unit.form_edit', compact('unit'));
+        return view('tahap.form_edit', compact('tahap'));
     }
 
     /**
@@ -88,26 +87,23 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(unitRequest $unitRequest, $id)
+    public function update(TahapRequest $TahapRequest, $id)
     {
-        $checkunitData = unit::findOrFail($id);
-
         # set variable
-        $kode = $unitRequest->kode;
-        $nama = $unitRequest->nama;
-        $posisi = $unitRequest->posisi;
+        $nama = $tahapRequest->nama;
+      
 
-        # set data array
-        $unitData = [
-            'kode' => $kode,
+        # set array tahap data
+        $tahapData = [
             'nama' => $nama,
-            'posisi' => ''
+            
         ];
 
-        $updateunit = unit::where('id', $id)
-            ->update($unitData);
+        # store
+        $updatetahap = Tahap::where('id', $id)
+            ->update($tahapData);
 
-        return redirect('/unit');
+        return redirect('/tahap');
     }
 
     /**
@@ -118,11 +114,9 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $checkunitData = unit::findOrFail($id);
+        $deletetahap = tahap::destroy($id);
 
-        $deleteunit = unit::destroy($id);
-
-        return redirect('/unit')
+        return redirect('/tahap')
             ->with([
                 'notification' => 'Data berhasil dihapus!'
             ]);

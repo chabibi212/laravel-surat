@@ -15,11 +15,11 @@ class CreateSuratKeluarTable extends Migration
     {
         Schema::create('surat_keluar', function (Blueprint $table) {
              $table->bigIncrements('id');
-            $table->bigInteger('unit_id');
-            $table->bigInteger('pengguna_id');
             $table->bigInteger('kategori_id');
+            $table->bigInteger('tahap_id');
             $table->string('nomor', 75);
             $table->string('asal', 75);
+            $table->string('status', 75);
             $table->string('perihal', 150);
             $table->date('tanggal_surat');
             $table->date('tanggal_kirim');

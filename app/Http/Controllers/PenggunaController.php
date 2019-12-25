@@ -43,7 +43,6 @@ class PenggunaController extends Controller
     public function store(PenggunaRequest $penggunaRequest)
     {
         # set variable
-        $email = $penggunaRequest->email;
         $nip = '-';
         $nama = $penggunaRequest->nama;
         $password = $penggunaRequest->password;
@@ -53,7 +52,6 @@ class PenggunaController extends Controller
 
         # set array
         $data = [
-            'email' => $email,
             'nip'=> $nip,
             'nama'=> $nama,
             'password' => $encryptPassword,
@@ -108,7 +106,6 @@ class PenggunaController extends Controller
     public function update(PenggunaRequest $penggunaRequest, $id)
     {
         # set variable
-       $email = $penggunaRequest->email;
         $nip = $penggunaRequest->nip;
         $nama = $penggunaRequest->nama;
         $password = $penggunaRequest->password;
@@ -124,7 +121,6 @@ class PenggunaController extends Controller
 
             # set array
             $data = [
-            'email' => $email,
             'nip'=> $nip,
             'nama'=> $nama,
             'password' => $encryptPassword,
@@ -138,7 +134,7 @@ class PenggunaController extends Controller
         }else{
             # set array
             $data = [
-                'email' => $email,
+                'nip' => $nip,
                 'role' => $role
             ];
 

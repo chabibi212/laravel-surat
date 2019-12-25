@@ -54,19 +54,19 @@
                             value="{{ csrf_token() }}"
                         />
                         <div class="form-group">
-                            <label for="email">
+                            <label for="nip">
                                 NIP
                             </label>
                             <input
                                 type="text"
-                                name="email"
-                                id="email"
-                                class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                value="{{ old('email') }}"
+                                name="nip"
+                                id="nip"
+                                class="form-control {{ $errors->has('nip') ? ' is-invalid' : '' }}"
+                                value="{{ old('nip') }}"
                             />
-                            @if($errors->has('email'))
+                            @if($errors->has('nip'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('nip') }}</strong>
                                 </span>
                             @endif
                         </div>

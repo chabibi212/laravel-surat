@@ -85,7 +85,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     Kategori *
                                 </label>
                                 <select
-                                    name="ktegori_id"
+                                    name="kategori_id"
                                     id="tujuan-bagian"
                                     class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
@@ -115,26 +115,18 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 <select
                                     name="tahap_id"
                                     id="tahap_id"
-                                    class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
+                                    class="form-control {{ $errors->has('tahap_id') ? ' is-invalid' : '' }}"
                                 >
                                     <option value="">
                                         --- Pilih Tahap ---
+                                     </option>
+                                   <option value="tahap 1">
+                                        tahap 1
                                     </option>
-                                    <option value="Tahap 1">
-                                        Tahap 1
-                                    </option>
-                                    <option value="Tahap 2">
-                                        Tahap 3
-                                    </option>
-                                    <option value="Tahap 3">
-                                        Tahap 3
+                                    <option value="tahap 2">
+                                        tahap 2
                                     </option>
                                 </select>
-                                @if($errors->has('kategori_id'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('kategori_id') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -159,11 +151,6 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         Invalid
                                     </option>
                                 </select>
-                                @if($errors->has('kategori_id'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('kategori_id') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -317,57 +304,6 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
         var unit_id = $(this).val();
         var pengguna_options = '';
 
-        if(unit_id != 0){
-            // set ajax
-            $.ajax({
-                url : '/pengguna/api/cari-pengguna-dari-bagian/'+unit_id,
-                data : 'get',
-                success: function(result) {
-                    if(result != undefined){
-                        if(result.length != 0) {
-                            // empty the options on select
-                            $('#tujuan-pengguna').empty();
-                            $('#tujuan-pengguna').removeAttr('readonly');
-
-                            // foreach the result assign into variable
-                            $.each(result, function(key, value) {
-                                pengguna_options =
-                                    '<option value="'+value.id+'">'
-                                        +value.nama+
-                                    '</option>';
-
-                                // append into select tujuan pengguna
-                                $('#tujuan-pengguna').append(pengguna_options);
-                            });
-                        }else{
-                            $('#tujuan-pengguna').empty();
-
-                            pengguna_options =
-                                '<option value="">'+
-                                    '--- Belum Ada pengguna Di Bagian Ini ---'+
-                                '</option>';
-
-                            $('#tujuan-pengguna').append(pengguna_options);
-                            $('#tujuan-pengguna').attr('readonly', true);
-                        }
-                    }
-                },
-                error: function(result) {
-                    alert(result);
-                }
-            });
-        }else{
-            $('#tujuan-pengguna').empty();
-
-            pengguna_options =
-                '<option value="">'+
-                    '--- Pilih Bagian Terlebih Dahulu ---'+
-                '</option>';
-
-            $('#tujuan-pengguna').append(pengguna_options);
-            $('#tujuan-pengguna').attr('readonly', true);
-        }
-    });
 
     $('#tanggal-surat').datepicker({
         language: 'id',

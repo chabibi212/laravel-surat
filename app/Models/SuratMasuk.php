@@ -10,7 +10,7 @@ class SuratMasuk extends Model
 
     protected $fillable = [
             'unit_id',
-            'pengguna_id',
+            'tahap_id',
             'kategori_id',
             'nomor',
             'asal',
@@ -25,13 +25,17 @@ class SuratMasuk extends Model
         'tanggal_terima'
     ];
 
-    public function jabatan()
+    public function Unit()
     {
-        return $this->belongsTo('App\Models\Jabatan');
+        return $this->belongsTo('App\Models\Unit');
+    }
+public function Tahap()
+    {
+        return $this->belongsTo('App\Models\Tahap');
     }
 
-    public function pegawai()
+    public function Kategori()
     {
-        return $this->belongsTo('App\Models\Pegawai');
+        return $this->belongsTo('App\Models\Kategori');
     }
 }

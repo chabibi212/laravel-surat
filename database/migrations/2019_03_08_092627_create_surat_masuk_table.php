@@ -15,8 +15,7 @@ class CreateSuratMasukTable extends Migration
     {
         Schema::create('surat_masuk', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('unit_id');
-            $table->bigInteger('pengguna_id');
+            $table->bigInteger('tahap_id');
             $table->bigInteger('kategori_id');
             $table->string('nomor', 75);
             $table->string('asal', 75);
@@ -24,7 +23,7 @@ class CreateSuratMasukTable extends Migration
             $table->date('tanggal_surat');
             $table->date('tanggal_terima');
             $table->string('lampiran', 250)->nullable();
-            $table->string('status_email', 25)->nullable();
+            $table->string('status', 25)->nullable();
             $table->timestamps();
         });
     }

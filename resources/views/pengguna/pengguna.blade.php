@@ -49,7 +49,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                         <tbody>
                             @foreach($pengguna as $item)
                                 <tr>
-                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->nip }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->unit }}</td>
                                     <td>

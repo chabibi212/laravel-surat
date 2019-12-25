@@ -4,10 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PenggunaAuthenticationRequest extends FormRequest
+class TahapRequest extends FormRequest
 {
-    protected $redirect = '/autentikasi/form-login';
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,8 +24,8 @@ class PenggunaAuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'nip' => 'required',
-            'password' => 'required'
+            'nama' => 'required',
+            
         ];
     }
 
@@ -39,9 +37,7 @@ class PenggunaAuthenticationRequest extends FormRequest
     public function messages()
     {
         return [
-            'nip.required' => 'nip perlu diisi!',
-            'nip.nip' => 'Format nip tidak sesuai!',
-            'password.required' => 'Kata sandi perlu diisi!'
+            'nama.required' => 'Nama perlu diisi!'
         ];
     }
 }
