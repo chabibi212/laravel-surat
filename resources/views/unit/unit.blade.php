@@ -32,7 +32,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
                 @endif
                 <p>
                     <a href="{{ url('/unit/form-tambah') }}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah unit
+                        <i class="fa fa-plus"></i> Tambah Unit
                     </a>
                 </p>
                 <div class="table-responsive">

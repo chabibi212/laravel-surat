@@ -32,7 +32,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                 @endif
                 <p>
                     <a href="{{ url('/kategori/form-tambah') }}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah kategori
+                        <i class="fa fa-plus"></i> Tambah Kategori
                     </a>
                 </p>
                 <div class="table-responsive">

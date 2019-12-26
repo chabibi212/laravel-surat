@@ -55,12 +55,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 <tr>
                                     <td>{{ $item->nomor }}</td>
                                     <td>{{ $item->asal }}</td>
-                                    <td>{{ $item->tanggal_terima->formatLocalized('%d %B %Y') }}</td>
-                                    <td>{{ $item->tanggal_surat->formatLocalized('%d %B %Y') }}</td>
+                                    <td>{{ $item->tanggal_terima }}</td>
+                                    <td>{{ $item->tanggal_surat }}</td>
                                     <td>{{ $item->perihal }}</td>
-                                    <td>{{ $item->kategori ->nama }}</td>
-                                    <td>{{ $item->tahap ->nama }}</td>
-                                   
+                                    <td>{{ $item->kategori->nama }}</td>
+                                    <td>{{ $item->tahap }}</td>
                                     <td>
                                         @if($item->status == 'Valid')
                                             <span
@@ -76,6 +75,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                             </span>
                                         @endif
                                     </td>
+                                    <td>
                                         <a
                                             href="/surat-masuk/form-ubah/{{ $item->id }}"
                                             class="btn btn-sm btn-warning text-white"

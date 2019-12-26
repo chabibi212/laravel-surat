@@ -11,7 +11,7 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Ubah tahap
+                    Ubah Tahap
                 </h3>
                 <hr />
                 <form action="{{ url('/tahap/ubah/'. $tahap->id) }}" method="post">

@@ -18,7 +18,8 @@ class SuratMasuk extends Model
             'tanggal_surat',
             'tanggal_terima',
             'lampiran',
-            'status' 
+            'status' ,
+            'pengguna_id'
         ];
 
     protected $dates = [
@@ -29,7 +30,8 @@ class SuratMasuk extends Model
     {
         return $this->belongsTo('App\Models\Unit');
     }
-public function Tahap()
+    
+    public function Tahap()
     {
         return $this->belongsTo('App\Models\Tahap');
     }

@@ -14,7 +14,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                     Ubah Pengguna
                 </h3>
                 <hr />
-                <form action="/pengguna/ubah/{{ $pengguna->id }}" method="post">
+                <form action="{{ url('/pengguna/ubah/'. $pengguna->id) }}" method="post">
                     <input
                         type="hidden"
                         name="_token"
@@ -55,7 +55,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                     type="text"
                                     name="nama"
                                     class="form-control {{ $errors->has('nama') ? ' is-invalid' : '' }}"
-                                    value="{{ old('nama') }}"
+                                    value="{{ $pengguna->nama }}"
                                 />
                                 @if($errors->has('nama'))
                                     <span class="invalid-feedback">
@@ -101,8 +101,12 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                     Unit
                                 </label>
                                 <select name="unit_id" class="form-control">
+                                    <option
+                                        value="Super Admin"
+                                        {{ $pengguna->role == 'Administrator' ? 'selected' : '' }}
+                                    >
                                     @foreach($unit as $item)
-                                        <option value="{{ $item->id }}">
+                                        <option value="{{ $item->id }}" {{ ($pengguna->unit_id == $item->id) ? 'selected' : '' }} >
                                             {{ $item->nama }}
                                         </option>
                                     @endforeach

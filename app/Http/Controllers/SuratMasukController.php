@@ -13,6 +13,7 @@ use App\Mail\SuratMasukMail;
 use Illuminate\Http\Request;
 use App\Services\LampiranFileService;
 use App\Http\Requests\SuratMasukRequest;
+use Auth;
 
 class SuratMasukController extends Controller
 {
@@ -65,17 +66,17 @@ class SuratMasukController extends Controller
         $unitID = $suratMasukRequest->unit_id;
         $kategoriID = $suratMasukRequest->kategori_id;
         $perihal = $suratMasukRequest->perihal;
+        $tanggalSurat = $suratMasukRequest->tanggal_surat;
         $tanggalTerima = $suratMasukRequest->tanggal_terima;
         $lampiranFile = $suratMasukRequest->lampiran;
+
+        $unitID = 1;
 
         $findkategoriEmail = kategori::find($kategoriID);
         $kategoriEmail = $findkategoriEmail->email;
         $kategoriName = $findkategoriEmail->nama;
 
         try {
-            Mail::to($kategoriEmail)
-                ->send(new SuratMasukMail($kategoriName));
-
             if (!empty($lampiranFile)) {
                 $lampiranFileName = $lampiranFile->getClientOriginalName();
                 $lampiranFileExtension = $lampiranFile->getClientOriginalExtension();
@@ -88,7 +89,9 @@ class SuratMasukController extends Controller
                     'asal' => $asal,
                     'perihal' => $perihal,
                     'tanggal_terima' => $tanggalTerima,
+                    'tanggal_surat' => $tanggalSurat,
                     'lampiran' => $lampiranFileName,
+                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
                     'status_email' => 'Terkirim'
                 ];
 
@@ -106,6 +109,8 @@ class SuratMasukController extends Controller
                     'asal' => $asal,
                     'perihal' => $perihal,
                     'tanggal_terima' => $tanggalTerima,
+                    'tanggal_surat' => $tanggalSurat,
+                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
                     'status_email' => 'Terkirim'
                 ];
 
@@ -130,7 +135,9 @@ class SuratMasukController extends Controller
                     'asal' => $asal,
                     'perihal' => $perihal,
                     'tanggal_terima' => $tanggalTerima,
+                    'tanggal_surat' => $tanggalSurat,
                     'lampiran' => $lampiranFileName,
+                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
                     'status_email' => 'Belum terkirim'
                 ];
 
@@ -148,6 +155,8 @@ class SuratMasukController extends Controller
                     'asal' => $asal,
                     'perihal' => $perihal,
                     'tanggal_terima' => $tanggalTerima,
+                    'tanggal_surat' => $tanggalSurat,
+                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
                     'status_email' => 'Belum terkirim'
                 ];
 

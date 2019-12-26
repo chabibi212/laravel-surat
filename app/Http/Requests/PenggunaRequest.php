@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PenggunaRequest extends FormRequest
 {
@@ -26,13 +27,19 @@ class PenggunaRequest extends FormRequest
         switch($this->method()) {
             case 'POST':
                 return [
-                    'nip' => 'required|unique:pengguna'.$this->id,
+                    'nip' => [
+                        'required',
+                        Rule::unique('pengguna')->ignore($this->id),
+                    ],
                     'password' => 'required',
                     'password_confirmation' => 'required|same:password'
                 ];
             case 'PUT':
                 return [
-                    'nip' => 'required|nip|unique:pengguna,'.$this->id,
+                    'nip' => [
+                        'required',
+                        Rule::unique('pengguna')->ignore($this->id),
+                    ],
                     'password_confirmation' => 'same:password'
                 ];
             default:break;

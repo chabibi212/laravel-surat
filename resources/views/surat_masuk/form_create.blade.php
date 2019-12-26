@@ -18,7 +18,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Tambah dokumen
+                    Tambah Dokumen
                 </h3>
                 <hr />
                 <form
@@ -38,7 +38,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="nomor">
-                                    Nomor Surat
+                                    Nomor Surat *
                                 </label>
                                 <input
                                     type="text"
@@ -133,12 +133,12 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                      <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tahap_id">
+                                <label for="status_id">
                                     Status *
                                 </label>
                                 <select
-                                    name="tahap_id"
-                                    id="tahap_id"
+                                    name="status_id"
+                                    id="status_id"
                                     class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
                                     <option value="">
@@ -303,7 +303,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
         // set variable
         var unit_id = $(this).val();
         var pengguna_options = '';
-
+    });
 
     $('#tanggal-surat').datepicker({
         language: 'id',

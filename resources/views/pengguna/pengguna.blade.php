@@ -32,7 +32,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                 @endif
                 <p>
                     <a href="{{ url('/pengguna/form-tambah') }}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah pengguna
+                        <i class="fa fa-plus"></i> Tambah Pengguna
                     </a>
                 </p>
                 <div class="table-responsive">
@@ -43,7 +43,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                 <th scope="col">Nama Lengkap</th>
                                 <th scope="col">Unit</th>
                                 <th scope="col">Hak Akses</th>
-                                <th scope="col">Opsi</th>
+                                <th scope="col" width="200">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +51,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                 <tr>
                                     <td>{{ $item->nip }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->unit }}</td>
+                                    <td>{{ $item->unit_nama }}</td>
                                     <td>
                                         <span class="badge badge-success">
                                             {{ $item->role }}

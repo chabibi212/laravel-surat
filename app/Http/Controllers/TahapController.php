@@ -36,7 +36,7 @@ class TahapController extends Controller
     {
 
         # set variable
-        $nama = $tahapRequest->nama;
+        $nama = $TahapRequest->nama;
       
 
         # set array tahap data
@@ -90,7 +90,7 @@ class TahapController extends Controller
     public function update(TahapRequest $TahapRequest, $id)
     {
         # set variable
-        $nama = $tahapRequest->nama;
+        $nama = $TahapRequest->nama;
       
 
         # set array tahap data

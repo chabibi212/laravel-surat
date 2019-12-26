@@ -26,8 +26,6 @@ class SuratMasukRequest extends FormRequest
         return [
             'asal' => 'required',
             'perihal' => 'required',
-            'tanggal_surat' => 'required',
-            'tanggal_terima' => 'required',
             'lampiran' => 'mimes:pdf'
         ];
     }

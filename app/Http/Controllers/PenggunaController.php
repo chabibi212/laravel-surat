@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use App\Http\Requests\PenggunaRequest;
+use DB;
 
 class PenggunaController extends Controller
 {
@@ -16,7 +17,12 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $pengguna = Pengguna::orderBy('created_at', 'desc')
+        $pengguna = Pengguna::select(DB::raw("
+                pengguna.*,
+                unit.nama AS unit_nama
+            "))
+            ->orderBy('created_at', 'desc')
+            ->join('unit', 'unit.id', '=', 'pengguna.unit_id')
             ->paginate(5);
 
         return view('pengguna.pengguna', compact('pengguna'));
@@ -43,7 +49,7 @@ class PenggunaController extends Controller
     public function store(PenggunaRequest $penggunaRequest)
     {
         # set variable
-        $nip = '-';
+        $nip = $penggunaRequest->nip;
         $nama = $penggunaRequest->nama;
         $password = $penggunaRequest->password;
         $unitID= $penggunaRequest->unit_id;
@@ -53,6 +59,7 @@ class PenggunaController extends Controller
         # set array
         $data = [
             'nip'=> $nip,
+            'email'=> '',
             'nama'=> $nama,
             'password' => $encryptPassword,
             'unit_id'=> $unitID,
@@ -135,7 +142,9 @@ class PenggunaController extends Controller
             # set array
             $data = [
                 'nip' => $nip,
-                'role' => $role
+                'nama'=> $nama,
+                'role' => $role,
+                'unit_id'=> $unitID,
             ];
 
             # update pengguna

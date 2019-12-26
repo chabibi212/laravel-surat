@@ -11,7 +11,7 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    tahap
+                    Tahap
                 </h3>
                 <hr />
                 @if(session('notification'))
@@ -32,7 +32,7 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
                 @endif
                 <p>
                     <a href="{{ url('/tahap/form-tambah') }}" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah tahap
+                        <i class="fa fa-plus"></i> Tambah Tahap
                     </a>
                 </p>
                 <div class="table-responsive">
