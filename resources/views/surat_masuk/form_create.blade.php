@@ -117,16 +117,20 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     id="tahap_id"
                                     class="form-control {{ $errors->has('tahap_id') ? ' is-invalid' : '' }}"
                                 >
-                                    <option value="">
+                                 <option value="">
                                         --- Pilih Tahap ---
-                                     </option>
-                                   <option value="tahap 1">
-                                        tahap 1
                                     </option>
-                                    <option value="tahap 2">
-                                        tahap 2
-                                    </option>
+                                     @foreach($tahap as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                 @if($errors->has('tahap_id'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('tahap_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -176,16 +180,16 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+               <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tanggal-surat">
+                                <label for="tanggal-terima">
                                     Tanggal Surat *
                                 </label>
                                 <div class="input-group">
                                     <input
                                         type="text"
-                                        class="form-control tanggal_surat {{ $errors->has('tanggal_surat') ? ' is-invalid' : '' }}"
+                                        class="form-control tanggal_surat{{ $errors->has('tanggal_surat') ? ' is-invalid' : '' }}"
                                         id="tanggal-surat"
                                         style="cursor: pointer"
                                         readonly

@@ -162,7 +162,7 @@ Dashboard &raquo; Surat Keluar | Aplikasi Manajemen Surat
                                         class="form-control tanggal_kirim {{ $errors->has('tanggal_kirim') ? ' is-invalid' : '' }}"
                                         id="tanggal-kirim"
                                         style="cursor: pointer"
-                                        readonly
+                                     readonly
                                     />
                                     <input
                                         type="hidden"

@@ -6,8 +6,8 @@ use Mail;
 use Crypt;
 use Storage;
 use Carbon\Carbon;
-use App\Models\Unit;
 use App\Models\Kategori;
+use App\Models\Tahap;
 use App\Models\SuratMasuk;
 use App\Mail\SuratMasukMail;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        $suratMasuk = SuratMasuk::with('unit')
+        $suratMasuk = SuratMasuk::with('tahap')
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
@@ -44,11 +44,11 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        $unit = unit::all();
+        $tahap = tahap::all();
         $kategori = kategori::orderBy('nama', 'desc')
             ->get();
 
-        return view('surat_masuk.form_create', compact('unit', 'kategori'));
+        return view('surat_masuk.form_create', compact('tahap', 'kategori'));
     }
 
     /**
@@ -62,8 +62,8 @@ class SuratMasukController extends Controller
         # set variable
         $nomor = $suratMasukRequest->nomor;
         $asal = $suratMasukRequest->asal;
-        $unitID = $suratMasukRequest->unit_id;
         $kategoriID = $suratMasukRequest->kategori_id;
+        $tahapID = $suratMasukRequest->tahap_id;
         $perihal = $suratMasukRequest->perihal;
         $tanggalTerima = $suratMasukRequest->tanggal_terima;
         $lampiranFile = $suratMasukRequest->lampiran;
@@ -82,7 +82,7 @@ class SuratMasukController extends Controller
 
                 # set array data
                 $data = [
-                    'unit_id' => $unitID,
+                    'tahap_id' => $tahapID,
                     'kategori_id' => $kategoriID,
                     'nomor' => $nomor,
                     'asal' => $asal,
@@ -100,7 +100,7 @@ class SuratMasukController extends Controller
             }else{
                 # set array data
                 $data = [
-                    'unit_id' => $unitID,
+                    'tahap_id' => $tahapID,
                     'kategori_id' => $kategoriID,
                     'nomor' => $nomor,
                     'asal' => $asal,
@@ -124,7 +124,7 @@ class SuratMasukController extends Controller
 
                 # set array data
                 $data = [
-                    'unit_id' => $unitID,
+                    'tahap_id' => $tahapID,
                     'kategori_id' => $kategoriID,
                     'nomor' => $nomor,
                     'asal' => $asal,
@@ -142,7 +142,7 @@ class SuratMasukController extends Controller
             }else{
                 # set array data
                 $data = [
-                    'unit_id' => $unitID,
+                    'tahap_id' => $tahapID,
                     'kategori_id' => $kategoriID,
                     'nomor' => $nomor,
                     'asal' => $asal,
@@ -183,9 +183,9 @@ class SuratMasukController extends Controller
     {
         $checkSuratMasuk = SuratMasuk::findOrFail($id);
         $suratMasuk = $checkSuratMasuk;
-        $unit = unit::all();
+        $tahap = tahap::all();
 
-        return view('surat_masuk.form_edit', compact('suratMasuk', 'unit'));
+        return view('surat_masuk.form_edit', compact('suratMasuk', 'tahap'));
     }
 
     /**
@@ -200,7 +200,7 @@ class SuratMasukController extends Controller
         # set variable
         $nomor = $suratMasukRequest->nomor;
         $asal = $suratMasukRequest->asal;
-        $unitID = $suratMasukRequest->unit_id;
+        $tahapID = $suratMasukRequest->tahap_id;
         $kategoriID = $suratMasukRequest->kategori_id;
         $perihal = $suratMasukRequest->perihal;
         $tanggalTerima = $suratMasukRequest->tanggal_terima;
@@ -228,7 +228,7 @@ class SuratMasukController extends Controller
 
             # set array data
             $data = [
-                'unit_id' => $unitID,
+                'tahap_id' => $tahapID,
                 'kategori_id' => $kategoriID,
                 'nomor' => $nomor,
                 'asal' => $asal,
@@ -242,7 +242,7 @@ class SuratMasukController extends Controller
         }else{
             # set array data
             $data = [
-                'unit_id' => $unitID,
+                'tahap_id' => $tahapID,
                 'kategori_id' => $kategoriID,
                 'nomor' => $nomor,
                 'asal' => $asal,

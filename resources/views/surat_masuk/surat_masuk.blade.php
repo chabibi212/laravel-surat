@@ -55,8 +55,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 <tr>
                                     <td>{{ $item->nomor }}</td>
                                     <td>{{ $item->asal }}</td>
-                                    <td>{{ $item->tanggal_terima->formatLocalized('%d %B %Y') }}</td>
-                                    <td>{{ $item->tanggal_surat->formatLocalized('%d %B %Y') }}</td>
+                                    <td>{{ $item->tanggal_terima->formatLocalized('Y-m-d') }}</td>
+                                    <td>{{ $item->tanggal_surat->formatLocalized('Y-m-d') }}</td>
                                     <td>{{ $item->perihal }}</td>
                                     <td>{{ $item->kategori ->nama }}</td>
                                     <td>{{ $item->tahap ->nama }}</td>
