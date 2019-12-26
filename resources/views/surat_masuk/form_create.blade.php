@@ -31,6 +31,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         name="_token"
                         value="{{ csrf_token()}}"
                     />
+
                     @foreach($errors->all() as $error)
                         {{ $error }}
                     @endforeach
@@ -59,19 +60,27 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="asal">
-                                    Asal *
+                                <label for="unit_id">
+                                    Unit Asal *
                                 </label>
-                                <input
-                                    type="text"
-                                    name="asal"
-                                    class="form-control {{ $errors->has('asal') ? ' is-invalid' : '' }}"
-                                    value="{{ old('asal') }}"
-                                />
-                                @if($errors->has('asal'))
+                                <select
+                                    name="unit_id"
+                                    id="unit_id"
+                                    class="form-control {{ $errors->has('unit_id') ? ' is-invalid' : '' }}"
+                                >
+                                    <option value="">
+                                        --- Pilih Unit ---
+                                     </option>
+                                    @foreach($unit as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('unit_id'))
                                     <span class="invalid-feedback">
                                         <strong>
-                                            {{ $errors->first('asal') }}
+                                            {{ $errors->first('unit_id') }}
                                         </strong>
                                     </span>
                                 @endif
@@ -120,13 +129,17 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     <option value="">
                                         --- Pilih Tahap ---
                                      </option>
-                                   <option value="tahap 1">
-                                        tahap 1
-                                    </option>
-                                    <option value="tahap 2">
-                                        tahap 2
-                                    </option>
+                                    @foreach($tahap as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                @if($errors->has('tahap_id'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('tahap_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -151,6 +164,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         Invalid
                                     </option>
                                 </select>
+                                @if($errors->has('status_id'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('status_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -252,20 +270,18 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 <label for="lampiran">
                                     Lampiran
                                 </label>
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        name="lampiran"
-                                        class="{{ $errors->has('lampiran') ? ' is-invalid' : '' }}"
-                                    />
-                                    @if($errors->has('lampiran'))
-                                        <span class="invalid-feedback">
-                                            <strong>
-                                                {{ $errors->first('lampiran') }}
-                                            </strong>
-                                        </span>
-                                    @endif
-                                </div>
+                                <input
+                                    type="file"
+                                    name="lampiran"
+                                    class="form-control {{ $errors->has('lampiran') ? ' is-invalid' : '' }}"
+                                />
+                                @if($errors->has('lampiran'))
+                                    <span class="invalid-feedback">
+                                        <strong>
+                                            {{ $errors->first('lampiran') }}
+                                        </strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>

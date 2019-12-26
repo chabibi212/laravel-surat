@@ -40,13 +40,12 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         <thead>
                             <tr>
                                 <th scope="col">Nomor</th>
-                                <th scope="col">Asal</th>
-                                <th scope="col">Tanggal Diterima</th>
+                                <th scope="col">Unit Asal</th>
                                 <th scope="col">Tanggal Surat</th>
-                                <th scope="col">Perihal</th>
+                                <th scope="col">Tanggal Diterima</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Tahap</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Perihal</th>
                                 <th scope="col">Opsi</th>
                             </tr>
                         </thead>
@@ -54,36 +53,28 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             @foreach($suratMasuk as $item)
                                 <tr>
                                     <td>{{ $item->nomor }}</td>
-                                    <td>{{ $item->asal }}</td>
-                                    <td>{{ $item->tanggal_terima }}</td>
-                                    <td>{{ $item->tanggal_surat }}</td>
+                                    <td>{{ @$item->unit->nama }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tanggal_surat)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tanggal_terima)) }}</td>
+                                    <td>{{ @$item->kategori->nama }}</td>
+                                    <td>{{ @$item->tahap->nama }}</td>
                                     <td>{{ $item->perihal }}</td>
-                                    <td>{{ $item->kategori->nama }}</td>
-                                    <td>{{ $item->tahap }}</td>
-                                    <td>
-                                        @if($item->status == 'Valid')
-                                            <span
-                                                class="badge badge-success"
-                                            >
-                                                {{ $item->Valid}}
-                                            </span>
-                                        @else
-                                            <span
-                                                class="badge badge-warning text-white"
-                                            >
-                                                {{ $item->status == 'Invalid' }}
-                                            </span>
-                                        @endif
-                                    </td>
                                     <td>
                                         <a
-                                            href="/surat-masuk/form-ubah/{{ $item->id }}"
+                                            href="{{ url('uploads/documents/surat-masuk/'. $item->lampiran) }}"
+                                            class="btn btn-sm btn-primary text-white"
+                                            target="_blank"
+                                        >
+                                            <i class="fa fa-file"></i> Lihat
+                                        </a>
+                                        <a
+                                            href="{{ url('/surat-masuk/form-ubah/'. $item->id) }}"
                                             class="btn btn-sm btn-warning text-white"
                                         >
                                             <i class="fa fa-edit"></i> Ubah
                                         </a>
                                         <a
-                                            href="/surat-masuk/hapus/{{ $item->id }}"
+                                            href="{{ url('/surat-masuk/hapus/'. $item->id) }}"
                                             class="btn btn-sm btn-danger"
                                             onclick="event.preventDefault();
                                             document.getElementById('delete-form').submit();"
@@ -92,7 +83,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         </a>
                                         <form
                                             id="delete-form"
-                                            action="/surat-masuk/hapus/{{ $item->id }}"
+                                            action="{{ url('/surat-masuk/hapus/'. $item->id) }}"
                                             method="post"
                                             style="display: none;"
                                         >

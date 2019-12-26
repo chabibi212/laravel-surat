@@ -19,7 +19,8 @@ class SuratMasuk extends Model
             'tanggal_terima',
             'lampiran',
             'status' ,
-            'pengguna_id'
+            'pengguna_id',
+            'tahap_id',
         ];
 
     protected $dates = [

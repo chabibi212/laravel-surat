@@ -24,9 +24,15 @@ class SuratMasukRequest extends FormRequest
     public function rules()
     {
         return [
-            'asal' => 'required',
+            'unit_id' => 'required',
+            'nomor' => 'required',
+            'kategori_id' => 'required',
+            'tahap_id' => 'required',
+            'status_id' => 'required',
             'perihal' => 'required',
-            'lampiran' => 'mimes:pdf'
+            'tanggal_surat' => 'required',
+            'tanggal_terima' => 'required',
+            'lampiran' => 'required|mimes:pdf'
         ];
     }
 
@@ -38,12 +44,15 @@ class SuratMasukRequest extends FormRequest
     public function messages()
     {
         return [
-            'asal.required' => 'Asal perlu diisi!',
-            'unit_id.required' => 'Pilih salah satu tujuan unit!',
-            'kategori_id.required' => 'Pilih salah satu tujuan kategori!',
+            'unit_id.required' => 'Pilih salah satu unit asal!',
+            'nomor.required' => 'Nomor Surat wajib diisi!',
+            'kategori_id.required' => 'Pilih salah satu kategori!',
+            'tahap_id.required' => 'Pilih salah satu tahap!',
+            'status_id.required' => 'Pilih salah satu status!',
             'perihal.required' => 'Perihal perlu diisi!',
             'tanggal_surat.required' => 'Tanggal surat perlu diisi!',
             'tanggal_terima.required' => 'Tanggal terima perlu diisi!',
+            'lampiran.required' => 'Lampiran perlu diisi!',
             'lampiran.mimes' => 'Format lampiran harus berformat: pdf!'
         ];
     }

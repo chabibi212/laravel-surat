@@ -19,7 +19,7 @@ Dashboard | Aplikasi Manajemen Surat
                         <center>
                             <h1><i class="fa fa-envelope"></i></h1>
                             <h3>Jumlah Dokumen</h3>
-                            <h4>0</h4>
+                            <h4>{{ $total }}</h4>
                         </center>
                     </div>
                     <!--<div class="col-lg-6 col-md-6 col-xs-12">

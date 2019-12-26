@@ -8,6 +8,7 @@ use Storage;
 use Carbon\Carbon;
 use App\Models\Unit;
 use App\Models\Kategori;
+use App\Models\Tahap;
 use App\Models\SuratMasuk;
 use App\Mail\SuratMasukMail;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class SuratMasukController extends Controller
      */
     public function index()
     {
-        $suratMasuk = SuratMasuk::with('unit')
+        $suratMasuk = SuratMasuk::with('unit', 'kategori', 'tahap')
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
@@ -45,11 +46,14 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        $unit = unit::all();
+        $unit = unit::orderBy('nama', 'desc')
+            ->get();
         $kategori = kategori::orderBy('nama', 'desc')
             ->get();
+        $tahap = tahap::orderBy('nama', 'desc')
+            ->get();
 
-        return view('surat_masuk.form_create', compact('unit', 'kategori'));
+        return view('surat_masuk.form_create', compact('unit', 'kategori', 'tahap'));
     }
 
     /**
@@ -62,113 +66,50 @@ class SuratMasukController extends Controller
     {
         # set variable
         $nomor = $suratMasukRequest->nomor;
-        $asal = $suratMasukRequest->asal;
+        $asal = '-';
         $unitID = $suratMasukRequest->unit_id;
         $kategoriID = $suratMasukRequest->kategori_id;
+        $tahapID = $suratMasukRequest->tahap_id;
         $perihal = $suratMasukRequest->perihal;
         $tanggalSurat = $suratMasukRequest->tanggal_surat;
         $tanggalTerima = $suratMasukRequest->tanggal_terima;
         $lampiranFile = $suratMasukRequest->lampiran;
 
-        $unitID = 1;
-
         $findkategoriEmail = kategori::find($kategoriID);
         $kategoriEmail = $findkategoriEmail->email;
         $kategoriName = $findkategoriEmail->nama;
 
-        try {
-            if (!empty($lampiranFile)) {
-                $lampiranFileName = $lampiranFile->getClientOriginalName();
-                $lampiranFileExtension = $lampiranFile->getClientOriginalExtension();
+        $lampiranFileName = 'masuk_'. date('YmdHis');
+        $lampiranFileExtension = $lampiranFile->getClientOriginalExtension();
 
-                # set array data
-                $data = [
-                    'unit_id' => $unitID,
-                    'kategori_id' => $kategoriID,
-                    'nomor' => $nomor,
-                    'asal' => $asal,
-                    'perihal' => $perihal,
-                    'tanggal_terima' => $tanggalTerima,
-                    'tanggal_surat' => $tanggalSurat,
-                    'lampiran' => $lampiranFileName,
-                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
-                    'status_email' => 'Terkirim'
-                ];
+        $lampiranFileName = $lampiranFileName.'.'.$lampiranFileExtension;
 
-                $uploadLampiranFile = $this
-                    ->lampiranFileServe
-                    ->uploadLampiranFile($lampiranFile, $lampiranFileName);
+        # set array data
+        $data = [
+            'unit_id' => $unitID,
+            'tahap_id' => $tahapID,
+            'kategori_id' => $kategoriID,
+            'nomor' => $nomor,
+            'asal' => $asal,
+            'perihal' => $perihal,
+            'tanggal_terima' => $tanggalTerima,
+            'tanggal_surat' => $tanggalSurat,
+            'lampiran' => $lampiranFileName,
+            'pengguna_id' => Auth::guard('pengguna')->User()->id,
+            'status_email' => 'Terkirim'
+        ];
 
-                $storeSuratMasuk = SuratMasuk::create($data);
-            }else{
-                # set array data
-                $data = [
-                    'unit_id' => $unitID,
-                    'kategori_id' => $kategoriID,
-                    'nomor' => $nomor,
-                    'asal' => $asal,
-                    'perihal' => $perihal,
-                    'tanggal_terima' => $tanggalTerima,
-                    'tanggal_surat' => $tanggalSurat,
-                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
-                    'status_email' => 'Terkirim'
-                ];
+        $uploadLampiranFile = $this
+            ->lampiranFileServe
+            ->uploadLampiranFile($lampiranFile, $lampiranFileName);
 
-                $storeSuratMasuk = SuratMasuk::create($data);
-            }
+        $storeSuratMasuk = SuratMasuk::create($data);
 
-            return redirect('/surat-masuk')
-                ->with([
-                    'status' => 'success',
-                    'notification' => 'Data berhasil disimpan, email berhasil terkirim!'
-                ]);
-        } catch (\Exception $e) {
-            if (!empty($lampiranFile)) {
-                $lampiranFileName = $lampiranFile->getClientOriginalName();
-                $lampiranFileExtension = $lampiranFile->getClientOriginalExtension();
-
-                # set array data
-                $data = [
-                    'unit_id' => $unitID,
-                    'kategori_id' => $kategoriID,
-                    'nomor' => $nomor,
-                    'asal' => $asal,
-                    'perihal' => $perihal,
-                    'tanggal_terima' => $tanggalTerima,
-                    'tanggal_surat' => $tanggalSurat,
-                    'lampiran' => $lampiranFileName,
-                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
-                    'status_email' => 'Belum terkirim'
-                ];
-
-                $uploadLampiranFile = $this
-                    ->lampiranFileServe
-                    ->uploadLampiranFile($lampiranFile, $lampiranFileName);
-
-                $storeSuratMasuk = SuratMasuk::create($data);
-            }else{
-                # set array data
-                $data = [
-                    'unit_id' => $unitID,
-                    'kategori_id' => $kategoriID,
-                    'nomor' => $nomor,
-                    'asal' => $asal,
-                    'perihal' => $perihal,
-                    'tanggal_terima' => $tanggalTerima,
-                    'tanggal_surat' => $tanggalSurat,
-                    'pengguna_id' => Auth::guard('pengguna')->User()->id,
-                    'status_email' => 'Belum terkirim'
-                ];
-
-                $storeSuratMasuk = SuratMasuk::create($data);
-            }
-
-            return redirect('/surat-masuk')
-                ->with([
-                    'status' => 'warning',
-                    'notification' => 'Data berhasil disimpan, tetapi email gagal terkirim!'
-                ]);
-        }
+        return redirect('/surat-masuk')
+        ->with([
+            'status' => 'success',
+            'notification' => 'Data berhasil disimpan!'
+        ]);
     }
 
     /**
