@@ -179,6 +179,35 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             'as' => 'surat.keluar.delete'
         ]);
     });
+    Route::group([
+        'prefix' => 'tahap',
+        'middleware' => 'role-super-admin'
+    ], function() {
+        Route::get('/', [
+            'uses' => 'TahapController@index',
+            'as' => 'tahap'
+        ]);
+        Route::get('/form-tambah', [
+            'uses' => 'TahapController@create',
+            'as' => 'tahap.form.create'
+        ]);
+        Route::get('/form-ubah/{id}', [
+            'uses' => 'TahapController@edit',
+            'as' => 'tahap.form.edit'
+        ]);
+        Route::post('/simpan', [
+            'uses' => 'TahapController@store',
+            'as' => 'tahap.store'
+        ]);
+        Route::put('/ubah/{id}', [
+            'uses' => 'TahapController@update',
+            'as' => 'tahap.update'
+        ]);
+        Route::delete('/hapus/{id}', [
+            'uses' => 'TahapController@destroy',
+            'as' => 'tahap.delete'
+        ]);
+    });
 });
 
 Auth::routes();
