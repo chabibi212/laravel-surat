@@ -17,23 +17,23 @@ class UnitTableSeeder extends Seeder
         $createunit = DB::table('unit')
             ->insert([
                 [
-                    'kode' => 'KADIN',
-                    'nama' => 'Kepala Dinas',
-                    'posisi' => 'Non-pimpinan',
+                    'kode' => 'BU',
+                    'nama' => 'Biro Umum',
+                    'posisi' => '-',
                     'created_at' => Carbon\Carbon::now(),
                     'updated_at' => Carbon\Carbon::now()
                 ],
                 [
-                    'kode' => 'SKR',
-                    'nama' => 'Sekretaris',
-                    'posisi' => 'Non-pimpinan',
+                    'kode' => 'DISPERINDAG',
+                    'nama' => 'Dinas Perindustrian dan Perdagangan',
+                    'posisi' => '-',
                     'created_at' => Carbon\Carbon::now(),
                     'updated_at' => Carbon\Carbon::now()
                 ],
                 [
-                    'kode' => 'KMR',
-                    'nama' => 'Komisaris',
-                    'posisi' => 'Pimpinan',
+                    'kode' => 'DISPENDUK',
+                    'nama' => ' Dinas Kependudukan',
+                    'posisi' => '-',
                     'created_at' => Carbon\Carbon::now(),
                     'updated_at' => Carbon\Carbon::now()
                 ]

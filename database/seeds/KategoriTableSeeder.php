@@ -17,10 +17,10 @@ class KategoriTableSeeder extends Seeder
         $kategoriCreate = DB::table('kategori')
             ->insert([
             [    
-                'nama' => 'Permintaan Barang'
+                'nama' => 'Laporan Pertanggung Jawaban'
             ],
         [
-                'nama' => 'Ijin Kirim'
+                'nama' => 'Rencana Anggaran'
             ]
         ]);
     }

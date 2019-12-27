@@ -17,10 +17,11 @@ class PenggunaTableSeeder extends Seeder
         $createPengguna = DB::table('pengguna')
             ->insert([
                 [
-                    'nama'=>'bayu',
-                    'nip'=>'7281728192',
+                    'nama'=>'Admin',
+                    'email'=>'-',
+                    'nip'=>'A101',
                     'password' => bcrypt('secret'),
-                    'unit_id' =>1,
+                    'unit_id' => 1,
                     'role' => 'Super Admin'
                 ]
             ]);
