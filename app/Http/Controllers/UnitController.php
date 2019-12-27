@@ -37,7 +37,7 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UnitRequest $UnitRequest)
+    public function store(UnitRequest $unitRequest)
     {
         # set variable
         $kode = $unitRequest->kode;
