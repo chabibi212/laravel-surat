@@ -83,11 +83,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                      <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tujuan-bagian">
+                                <label for="tujuan-kategori">
                                     Kategori *
                                 </label>
                                 <select
-                                    name="ktegori_id"
+                                    name="kategori_id"
                                     id="tujuan-bagian"
                                     class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
@@ -109,12 +109,12 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tujuan-bagian">
+                                <label for="tujuan-tahap">
                                     Tahap *
                                 </label>
                                 <select
                                     name="tahap_id"
-                                    id="tujuan-bagian"
+                                    id="tujuan-tahap"
                                     class="form-control {{ $errors->has('tahap_id') ? ' is-invalid' : '' }}"
                                 >
                                     <option value="">
