@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             'as' => 'unit.form.edit'
         ]);
         Route::post('/simpan', [
-            'uses' => 'unitController@store',
+            'uses' => 'UnitController@store',
             'as' => 'unit.store'
         ]);
         Route::put('/ubah/{id}', [
