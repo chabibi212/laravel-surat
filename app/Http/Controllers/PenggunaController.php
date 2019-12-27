@@ -59,7 +59,6 @@ class PenggunaController extends Controller
         # set array
         $data = [
             'nip'=> $nip,
-            'email'=> '',
             'nama'=> $nama,
             'password' => $encryptPassword,
             'unit_id'=> $unitID,
