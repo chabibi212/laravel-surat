@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ url('') }}">
         <img src="{{ url('/assets/img/logo-surat.png') }}" width="40" height="40" alt="">
-        Manajemen Surat
+        E-Arsip
     </a>
     <button
         class="navbar-toggler"
