@@ -133,9 +133,15 @@ class SuratMasukController extends Controller
     {
         $checkSuratMasuk = SuratMasuk::findOrFail($id);
         $suratMasuk = $checkSuratMasuk;
-        $unit = unit::all();
 
-        return view('surat_masuk.form_edit', compact('suratMasuk', 'unit'));
+        $unit = unit::orderBy('nama', 'desc')
+            ->get();
+        $kategori = kategori::orderBy('nama', 'desc')
+            ->get();
+        $tahap = tahap::orderBy('nama', 'desc')
+            ->get();
+
+        return view('surat_masuk.form_edit', compact('suratMasuk', 'unit', 'kategori', 'tahap'));
     }
 
     /**
