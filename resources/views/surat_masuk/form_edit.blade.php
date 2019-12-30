@@ -96,7 +96,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     </option>
                                     @foreach($kategori as $item)
                                         <option value="{{ $item->id }}">
-                                            {{ $item->nama }}
+                                            {{ $item->jenis .' - '. $item->nama }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -122,7 +122,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     </option>
                                     @foreach($tahap as $item)
                                         <option value="{{ $item->id }}">
-                                            {{ $item->nama }}
+                                            {{ $item->jenis .' - '. $item->nama }}
                                         </option>
                                     @endforeach
                                 </select>

@@ -22,7 +22,6 @@ Dashboard | Aplikasi Manajemen Surat
                                     name="filter_jenis"
                                     id="filter_jenis"
                                     class="form-control"
-                                    style="width: 100%"
                                 >
                                     <option value="">--- Filter Jenis ---</option>
                                     <option value="Perangkat Daerah" {{ $filter_jenis == 'Perangkat Daerah' ? 'selected' : '' }}>Perangkat Daerah</option>
@@ -38,7 +37,6 @@ Dashboard | Aplikasi Manajemen Surat
                                     name="filter_unit"
                                     id="filter_unit"
                                     class="form-control"
-                                    style="width: 100%"
                                 >
                                     <option value="">--- Filter Unit ---</option>
                                     @foreach($unit as $item)
@@ -51,7 +49,6 @@ Dashboard | Aplikasi Manajemen Surat
                                     name="filter_kategori"
                                     id="filter_kategori"
                                     class="form-control"
-                                    style="width: 100%"
                                 >
                                     <option value="">--- Filter Kategori ---</option>
                                     @foreach($kategori as $item)
@@ -64,7 +61,6 @@ Dashboard | Aplikasi Manajemen Surat
                                     name="filter_tahap"
                                     id="filter_tahap"
                                     class="form-control"
-                                    style="width: 100%"
                                 >
                                     <option value="">--- Filter Tahap ---</option>
                                     @foreach($tahap as $item)
