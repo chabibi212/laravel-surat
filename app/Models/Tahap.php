@@ -8,6 +8,7 @@ class Tahap extends Model
     protected $table = 'tahap';
     protected $fillable = [
         'nama',
+        'jenis',
         
     ];
 

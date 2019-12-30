@@ -40,6 +40,23 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-xs-12">
+                                <label for="jenis">
+                                    Jenis
+                                </label>
+                                <select name="jenis" class="form-control">
+                                    <option value="Perangkat Daerah">Perangkat Daerah</option>
+                                    <option value="Surat Masuk">Surat Masuk</option>
+                                    <option value="Telaah Staf">Telaah Staf</option>
+                                    <option value="Petunjuk / Arahan">Petunjuk / Arahan</option>
+                                    <option value="Surat Keluar">Surat Keluar</option>
+                                    <option value="Agenda Kerja">Agenda Kerja</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <hr />
                     <p>
                         <code>

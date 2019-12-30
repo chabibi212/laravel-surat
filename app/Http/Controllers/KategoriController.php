@@ -37,11 +37,13 @@ class KategoriController extends Controller
 
         # set variable
         $nama = $kategoriRequest->nama;
+        $jenis = $kategoriRequest->jenis;
       
 
         # set array kategori data
         $kategoriData = [
             'nama' => $nama,
+            'jenis' => $jenis,
             
         ];
 
@@ -91,11 +93,13 @@ class KategoriController extends Controller
     {
         # set variable
         $nama = $kategoriRequest->nama;
+        $jenis = $kategoriRequest->jenis;
       
 
         # set array kategori data
         $kategoriData = [
             'nama' => $nama,
+            'jenis' => $jenis,
             
         ];
 

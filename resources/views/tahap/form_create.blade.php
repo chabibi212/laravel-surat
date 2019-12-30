@@ -40,6 +40,24 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-xs-12">
+                                <label for="jenis">
+                                    Jenis
+                                </label>
+                                <select name="jenis" class="form-control">
+                                    <option value="RKT">RKT</option>
+                                    <option value="RKPD-RENJA">RKPD-RENJA</option>
+                                    <option value="RKPD">RKPD</option>
+                                    <option value="RENJA">RENJA</option>
+                                    <option value="LAMPIRAN SE">LAMPIRAN SE</option>
+                                    <option value="RKT LAKIP">RKT LAKIP</option>
+                                    <option value="RENJA KABKOTA">RENJA KABKOTA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <hr />
                     <p>
                         <code>

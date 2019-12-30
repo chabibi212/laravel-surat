@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\SuratMasuk;
+use App\Models\Unit;
+use App\Models\Kategori;
+use App\Models\Tahap;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,10 +15,39 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $total = SuratMasuk::count();
-        return view('dashboard', ['total'=>$total]);
+        $filter_jenis = $request->filter_jenis;
+        $filter_unit = $request->filter_unit;
+        $filter_kategori = $request->filter_kategori;
+        $filter_tahap = $request->filter_tahap;
+
+        $suratMasuk = SuratMasuk::with('unit', 'kategori', 'tahap')
+            ->join('kategori', 'kategori_id', '=', 'kategori.id')
+            ->orderBy('surat_masuk.created_at', 'desc')
+            ->where(function($q) use($filter_jenis, $filter_unit, $filter_kategori, $filter_tahap){
+                if($filter_jenis){
+                    $q->where('kategori.jenis', $filter_jenis);
+                }
+                if($filter_unit){
+                    $q->where('unit_id', $filter_unit);
+                }
+                if($filter_kategori){
+                    $q->where('kategori_id', $filter_kategori);
+                }
+                if($filter_tahap){
+                    $q->where('tahap_id', $filter_tahap);
+                }
+            })
+            ->paginate(5);
+        $unit = unit::orderBy('nama', 'desc')
+            ->get();
+        $kategori = kategori::orderBy('nama', 'desc')
+            ->get();
+        $tahap = tahap::orderBy('nama', 'desc')
+            ->get();
+
+        return view('dashboard', compact('filter_jenis','filter_unit','filter_kategori','filter_tahap','suratMasuk','unit', 'kategori', 'tahap'));
     }
 
     /**

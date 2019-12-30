@@ -40,6 +40,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                         <thead>
                             <tr>
                                 <th scope="col">Nama</th>
+                                <th scope="col">Jenis</th>
                                 <th scope="col" width="200">Opsi</th>
                             </tr>
                         </thead>
@@ -47,6 +48,7 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                             @foreach($kategori as $item)
                                 <tr>
                                     <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->jenis }}</td>
                                     <td>
                                         <a
                                             href="{{ url('/kategori/form-ubah/'.$item->id) }}"

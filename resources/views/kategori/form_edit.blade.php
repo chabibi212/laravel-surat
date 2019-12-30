@@ -45,6 +45,23 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-xs-12">
+                                <label for="jenis">
+                                    Jenis
+                                </label>
+                                <select name="jenis" class="form-control">
+                                    <option value="Perangkat Daerah" {{ $kategori->jenis == 'Perangkat Daerah' ? 'selected' : '' }}>Perangkat Daerah</option>
+                                    <option value="Surat Masuk" {{ $kategori->jenis == 'Surat Masuk' ? 'selected' : '' }}>Surat Masuk</option>
+                                    <option value="Telaah Staf" {{ $kategori->jenis == 'Telaah Staf' ? 'selected' : '' }}>Telaah Staf</option>
+                                    <option value="Petunjuk / Arahan" {{ $kategori->jenis == 'Petunjuk / Arahan' ? 'selected' : '' }}>Petunjuk / Arahan</option>
+                                    <option value="Surat Keluar" {{ $kategori->jenis == 'Surat Keluar' ? 'selected' : '' }}>Surat Keluar</option>
+                                    <option value="Agenda Kerja" {{ $kategori->jenis == 'Agenda Kerja' ? 'selected' : '' }}>Agenda Kerja</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">
                         Simpan
                     </button>

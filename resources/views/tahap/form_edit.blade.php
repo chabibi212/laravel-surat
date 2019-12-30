@@ -45,6 +45,24 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-xs-12">
+                                <label for="jenis">
+                                    Jenis
+                                </label>
+                                <select name="jenis" class="form-control">
+                                    <option value="RKT" {{ $tahap->jenis == 'RKT' ? 'selected' : '' }}>RKT</option>
+                                    <option value="RKPD-RENJA"{{ $tahap->jenis == 'RKPD-RENJA' ? 'selected' : '' }}>RKPD-RENJA</option>
+                                    <option value="RKPD"{{ $tahap->jenis == 'RKPD' ? 'selected' : '' }}>RKPD</option>
+                                    <option value="RENJA"{{ $tahap->jenis == 'RENJA' ? 'selected' : '' }}>RENJA</option>
+                                    <option value="LAMPIRAN SE"{{ $tahap->jenis == 'LAMPIRAN SE' ? 'selected' : '' }}>LAMPIRAN SE</option>
+                                    <option value="RKT LAKIP"{{ $tahap->jenis == 'RKT LAKIP' ? 'selected' : '' }}>RKT LAKIP</option>
+                                    <option value="RENJA KABKOTA"{{ $tahap->jenis == 'RENJA KABKOTA' ? 'selected' : '' }}>RENJA KABKOTA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">
                         Simpan
                     </button>

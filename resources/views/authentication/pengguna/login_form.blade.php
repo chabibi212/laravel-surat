@@ -101,6 +101,11 @@
                     </form>
                   </div>
                 </div>
+                <center>
+                <p style="font-size: 12px;">
+                    e-adarangga | Elektronik Arsip Dokumen Perencanaan & Penganggaran
+                </p>
+                </center>
             </div>
         </div>
     </div>

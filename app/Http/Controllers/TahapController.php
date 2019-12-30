@@ -37,11 +37,13 @@ class TahapController extends Controller
 
         # set variable
         $nama = $TahapRequest->nama;
+        $jenis = $TahapRequest->jenis;
       
 
         # set array tahap data
         $tahapData = [
             'nama' => $nama,
+            'jenis' => $jenis,
             
         ];
 
@@ -91,11 +93,13 @@ class TahapController extends Controller
     {
         # set variable
         $nama = $TahapRequest->nama;
+        $jenis = $TahapRequest->jenis;
       
 
         # set array tahap data
         $tahapData = [
             'nama' => $nama,
+            'jenis' => $jenis,
             
         ];
 

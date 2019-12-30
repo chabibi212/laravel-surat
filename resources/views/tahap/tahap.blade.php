@@ -40,6 +40,7 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
                         <thead>
                             <tr>
                                 <th scope="col">Nama</th>
+                                <th scope="col">Jenis</th>
                                 <th scope="col" width="200">Opsi</th>
                             </tr>
                         </thead>
@@ -47,6 +48,7 @@ Dashboard &raquo; tahap | Aplikasi Manajemen Surat
                             @foreach($tahap as $item)
                                 <tr>
                                     <td>{{ $item->nama }}</td>
+                                    <td>{{ $item->jenis }}</td>
                                     <td>
                                         <a
                                             href="{{ url('/tahap/form-ubah/'.$item->id) }}"
