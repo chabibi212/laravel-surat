@@ -118,13 +118,6 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $checkunitData = unit::findOrFail($id);
-
-        $deleteunit = unit::destroy($id);
-
-        return redirect('/unit')
-            ->with([
-                'notification' => 'Data berhasil dihapus!'
-            ]);
+        var_dump($id);
     }
 }

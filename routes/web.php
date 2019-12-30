@@ -148,7 +148,7 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             'uses' => 'SuratMasukController@update',
             'as' => 'surat.masuk.update'
         ]);
-        Route::delete('/hapus/{id}', [
+        Route::get('/hapus/{id}', [
             'uses' => 'SuratMasukController@destroy',
             'as' => 'surat.masuk.delete'
         ]);

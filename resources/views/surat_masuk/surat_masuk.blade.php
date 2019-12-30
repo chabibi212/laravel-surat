@@ -52,7 +52,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         <tbody>
                             @foreach($suratMasuk as $item)
                                 <tr>
-                                    <td>{{ $item->nomor }}</td>
+                                    <td>{{ $item->id }}</td>
                                     <td>{{ @$item->unit->nama }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_surat)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_terima)) }}</td>
@@ -76,28 +76,9 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         <a
                                             href="{{ url('/surat-masuk/hapus/'. $item->id) }}"
                                             class="btn btn-sm btn-danger"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('delete-form').submit();"
                                         >
                                             <i class="fa fa-times"></i> Hapus
                                         </a>
-                                        <form
-                                            id="delete-form"
-                                            action="{{ url('/surat-masuk/hapus/'. $item->id) }}"
-                                            method="post"
-                                            style="display: none;"
-                                        >
-                                            <input
-                                                type="hidden"
-                                                name="_token"
-                                                value="{{ csrf_token() }}"
-                                            />
-                                            <input
-                                                type="hidden"
-                                                name="_method"
-                                                value="delete"
-                                            />
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

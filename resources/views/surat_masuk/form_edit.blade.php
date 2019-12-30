@@ -7,7 +7,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
 @section('css')
 <link
     rel="stylesheet"
-    href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css"
+    href="{{ url('/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css') }}"
 />
 @endsection
 
@@ -46,7 +46,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     type="text"
                                     name="nomor"
                                     class="form-control {{ $errors->has('nomor') ? ' is-invalid' : '' }}"
-                                    value="{{ old('nomor') }}"
+                                    value="{{ $suratMasuk->nomor }}"
                                 />
                                 @if($errors->has('nomor'))
                                     <span class="invalid-feedback">
@@ -61,26 +61,31 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="asal">
-                                    Asal *
+                                <label for="unit_id">
+                                    Unit Asal *
                                 </label>
-                                <input
-                                    type="text"
-                                    name="asal"
-                                    class="form-control {{ $errors->has('asal') ? ' is-invalid' : '' }}"
-                                    value="{{ old('asal') }}"
-                                />
-                                @if($errors->has('asal'))
+                                <select
+                                    name="unit_id"
+                                    id="unit_id"
+                                    class="form-control {{ $errors->has('unit_id') ? ' is-invalid' : '' }}"
+                                >
+                                    @foreach($unit as $item)
+                                        <option value="{{ $item->id }}" {{ ($suratMasuk->unit_id == $item->id) ? 'selected' : '' }}>
+                                            {{ $item->nama }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('unit_id'))
                                     <span class="invalid-feedback">
                                         <strong>
-                                            {{ $errors->first('asal') }}
+                                            {{ $errors->first('unit_id') }}
                                         </strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="tujuan-kategori">
@@ -91,11 +96,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     id="tujuan-bagian"
                                     class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
-                                    <option value="">
-                                        --- Pilih Kategori ---
-                                    </option>
                                     @foreach($kategori as $item)
-                                        <option value="{{ $item->id }}">
+                                        <option value="{{ $item->id }}" {{ ($suratMasuk->kategori_id == $item->id) ? 'selected' : '' }}>
                                             {{ $item->jenis .' - '. $item->nama }}
                                         </option>
                                     @endforeach
@@ -106,6 +108,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     </span>
                                 @endif
                             </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
@@ -117,11 +121,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     id="tujuan-tahap"
                                     class="form-control {{ $errors->has('tahap_id') ? ' is-invalid' : '' }}"
                                 >
-                                    <option value="">
-                                        --- Pilih tahap ---
-                                    </option>
                                     @foreach($tahap as $item)
-                                        <option value="{{ $item->id }}">
+                                        <option value="{{ $item->id }}" {{ ($suratMasuk->tahap_id == $item->id) ? 'selected' : '' }}>
                                             {{ $item->jenis .' - '. $item->nama }}
                                         </option>
                                     @endforeach
@@ -132,7 +133,9 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     </span>
                                 @endif
                             </div>
-                <div class="form-group">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="tahap_id">
@@ -143,13 +146,10 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     id="tahap_id"
                                     class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
                                 >
-                                    <option value="">
-                                        --- Pilih Status ---
-                                    </option>
-                                    <option value="Valid">
+                                    <option value="Valid" {{ ($suratMasuk->status == 'Valid') ? 'selected' : '' }}>
                                         Valid
                                     </option>
-                                    <option value="Invalid">
+                                    <option value="Invalid" {{ ($suratMasuk->status == 'Invalid') ? 'selected' : '' }}>
                                         Invalid
                                     </option>
                                 </select>
@@ -166,7 +166,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     type="text"
                                     name="perihal"
                                     class="form-control {{ $errors->has('perihal') ? ' is-invalid' : '' }}"
-                                    value="{{ old('perihal') }}"
+                                    value="{{ $suratMasuk->perihal }}"
                                 />
                                 @if($errors->has('perihal'))
                                     <span class="invalid-feedback">
@@ -196,6 +196,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         type="hidden"
                                         name="tanggal_surat"
                                         id="input-tanggal-surat"
+                                        value="{{ $suratMasuk->tanggal_surat }}"
                                     />
                                   <div class="input-group-append">
                                     <span class="input-group-text">
@@ -294,49 +295,16 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
 @section('js')
 <script
     type="text/javascript"
-    src="/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"
+    src="{{ url('/assets/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"
+></script>
+<script
+    type="text/javascript"
+    src="{{ url('/assets/bootstrap-datepicker/locales/bootstrap-datepicker.id.min.js') }}"
 ></script>
 <script type="text/javascript">
     var tahap_id = $("#tujuan-tahap").val();
     var old_pengguna_id = {{ $suratMasuk->pengguna_id }};
 
-    if (tahap_id != '') {
-        $.ajax({
-            url: '/pengguna/api/cari-pengguna-dari-tahap/'+tahap_id,
-            data: 'get',
-            success: function(result) {
-                console.log(result);
-                if(result != undefined){
-                    if (result.length != 0) {
-                        // empty the options on select
-                        $('#tujuan-pengguna').empty();
-                        $('#tujuan-pengguna').removeAttr('readonly');
-
-                        // foreach the result assign insto variable
-                        $.each(result, function(key, value) {
-                            pengguna_options =
-                                '<option value="'+value.id+'"'+(old_pengguna_id == value.id ? 'selected' : '')+'>'
-                                    +value.nama+
-                                '</option>';
-
-                            // append into select tujuan pengguna
-                            $('#tujuan-pengguna').append(pengguna_options);
-                        });
-                    }else{
-                        $('#tujuan-pengguna').empty();
-
-                        pengguna_options =
-                            '<option value="">'+
-                                '--- Belum Ada pengguna Di tahap Ini ---'+
-                            '</option>';
-
-                        $('#tujuan-pengguna').append(pengguna_options);
-                        $('#tujuan-pengguna').attr('readonly', true);
-                    }
-                }
-            }
-        })
-    }
 
     $('#tujuan-tahap').click(function(){
         // set variable
@@ -394,7 +362,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
             $('#tujuan-pengguna').attr('readonly', true);
         }
     });
- $('#tanggal-surat').datepicker({
+    var tanggal_surat = $('#tanggal-surat').datepicker({
         language: 'id',
         todayHighlight: true,
         format: {
@@ -419,6 +387,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
             }
         }
     });
+
     $('#tanggal-terima').datepicker({
         language: 'id',
         todayHighlight: true,
