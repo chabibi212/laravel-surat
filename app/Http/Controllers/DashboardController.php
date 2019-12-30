@@ -40,11 +40,16 @@ class DashboardController extends Controller
                 }
             })
             ->paginate(5);
-        $unit = unit::orderBy('nama', 'desc')
+
+        $unit = unit::orderBy('nama', 'asc')
             ->get();
-        $kategori = kategori::orderBy('nama', 'desc')
+            
+        $kategori = kategori::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'asc')
             ->get();
-        $tahap = tahap::orderBy('nama', 'desc')
+
+        $tahap = tahap::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'asc')
             ->get();
 
         return view('dashboard', compact('filter_jenis','filter_unit','filter_kategori','filter_tahap','suratMasuk','unit', 'kategori', 'tahap'));

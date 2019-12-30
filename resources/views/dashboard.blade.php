@@ -53,7 +53,7 @@ Dashboard | Aplikasi Manajemen Surat
                         >
                             <option value="">--- Filter Kategori ---</option>
                             @foreach($kategori as $item)
-                                <option value="{{ $item->id }}" {{ $filter_kategori == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                                <option value="{{ $item->id }}" {{ $filter_kategori == $item->id ? 'selected' : '' }}>{{ $item->jenis .'-'. $item->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -66,7 +66,7 @@ Dashboard | Aplikasi Manajemen Surat
                         >
                             <option value="">--- Filter Tahap ---</option>
                             @foreach($tahap as $item)
-                                <option value="{{ $item->id }}" {{ $filter_tahap == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                                <option value="{{ $item->id }}" {{ $filter_tahap == $item->id ? 'selected' : '' }}>{{ $item->jenis .'-'. $item->nama }}</option>
                             @endforeach
                         </select>
                     </div>
