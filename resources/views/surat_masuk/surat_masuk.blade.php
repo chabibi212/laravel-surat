@@ -52,7 +52,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         <tbody>
                             @foreach($suratMasuk as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->nomor }}</td>
                                     <td>{{ @$item->unit->nama }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_surat)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_terima)) }}</td>
