@@ -35,6 +35,77 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         <i class="fa fa-plus"></i> Tambah Dokumen
                     </a>
                 </p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nomor</th>
+                                <th scope="col">Unit Asal</th>
+                                <th scope="col">Tanggal Surat</th>
+                                <th scope="col">Tanggal Diterima</th>
+                                <th scope="col">Kategori</th>
+                                <th scope="col">Tahap</th>
+                                <th scope="col">Perihal</th>
+                                <th scope="col">Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($suratMasuk as $item)
+                                <tr>
+                                    <td>{{ $item->nomor }}</td>
+                                    <td>{{ @$item->unit->nama }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tanggal_surat)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->tanggal_terima)) }}</td>
+                                    <td>{{ @$item->kategori->nama }}</td>
+                                    <td>{{ @$item->tahap->nama }}</td>
+                                    <td>{{ $item->perihal }}</td>
+                                    <td>
+                                        <a
+                                            href="{{ url('uploads/documents/surat-masuk/'. $item->lampiran) }}"
+                                            class="btn btn-sm btn-primary text-white"
+                                            target="_blank"
+                                        >
+                                            <i class="fa fa-file"></i> Lihat
+                                        </a>
+                                        <a
+                                            href="{{ url('/surat-masuk/form-ubah/'. $item->id) }}"
+                                            class="btn btn-sm btn-warning text-white"
+                                        >
+                                            <i class="fa fa-edit"></i> Ubah
+                                        </a>
+                                        <a
+                                            href="{{ url('/surat-masuk/hapus/'. $item->id) }}"
+                                            class="btn btn-sm btn-danger"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('delete-form').submit();"
+                                        >
+                                            <i class="fa fa-times"></i> Hapus
+                                        </a>
+                                        <form
+                                            id="delete-form"
+                                            action="{{ url('/surat-masuk/hapus/'. $item->id) }}"
+                                            method="post"
+                                            style="display: none;"
+                                        >
+                                            <input
+                                                type="hidden"
+                                                name="_token"
+                                                value="{{ csrf_token() }}"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                name="_method"
+                                                value="delete"
+                                            />
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $suratMasuk->links() }}
+                </div>
+              </div>
             </div>
         </div>
     </div>

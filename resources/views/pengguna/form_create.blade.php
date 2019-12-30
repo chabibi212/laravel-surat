@@ -69,7 +69,7 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                 <select name="role" class="form-control">
                                     <option
                                         value="Super Admin">
-                                        Administrator
+                                        Super Admin
                                     </option>
                                     <option
                                         value="Viewer">

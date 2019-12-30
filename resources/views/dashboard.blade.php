@@ -83,17 +83,31 @@ Dashboard | Aplikasi Manajemen Surat
                     <table class="table">
                         <thead>
                             <tr>
+                                <th scope="col">Jenis</th>
+                                <th scope="col">Unit</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Tahap</th>
                                 <th scope="col">Perihal</th>
+                                <th scope="col">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($suratMasuk as $item)
                                 <tr>
+                                    <td>{{ @$item->kategori->jenis }}</td>
+                                    <td>{{ @$item->unit->nama }}</td>
                                     <td>{{ @$item->kategori->nama }}</td>
                                     <td>{{ @$item->tahap->nama }}</td>
                                     <td>{{ $item->perihal }}</td>
+                                    <td>
+                                        <a
+                                            href="{{ url('uploads/documents/surat-masuk/'. $item->lampiran) }}"
+                                            class="btn btn-sm btn-primary text-white"
+                                            target="_blank"
+                                        >
+                                            <i class="fa fa-file"></i> Lihat
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

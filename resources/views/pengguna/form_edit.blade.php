@@ -74,9 +74,9 @@ Dashboard &raquo; Pengguna | Aplikasi Manajemen Surat
                                 <select name="role" class="form-control">
                                     <option
                                         value="Super Admin"
-                                        {{ $pengguna->role == 'Administrator' ? 'selected' : '' }}
+                                        {{ $pengguna->role == 'Super Admin' ? 'selected' : '' }}
                                     >
-                                        Administrator
+                                        Super Admin
                                     </option>
                                     <option
                                         value="Viewer"
