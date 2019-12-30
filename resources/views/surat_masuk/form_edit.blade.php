@@ -22,7 +22,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                 </h3>
                 <hr />
                 <form
-                    action="/surat-masuk/ubah/{{ $suratMasuk->id }}"
+                    action="{{ url('/surat-masuk/ubah/'. $suratMasuk->id) }}"
                     method="post"
                     enctype="multipart/form-data"
                 >
