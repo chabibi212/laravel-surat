@@ -85,11 +85,13 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
-        $unit = unit::orderBy('nama', 'desc')
+        $unit = unit::orderBy('nama', 'asc')
             ->get();
-        $kategori = kategori::orderBy('nama', 'desc')
+        $kategori = kategori::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'desc')
             ->get();
-        $tahap = tahap::orderBy('nama', 'desc')
+        $tahap = tahap::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'asc')
             ->get();
 
         return view('surat_masuk.form_create', compact('unit', 'kategori', 'tahap'));
@@ -173,11 +175,13 @@ class SuratMasukController extends Controller
         $checkSuratMasuk = SuratMasuk::findOrFail($id);
         $suratMasuk = $checkSuratMasuk;
 
-        $unit = unit::orderBy('nama', 'desc')
+        $unit = unit::orderBy('nama', 'asc')
             ->get();
-        $kategori = kategori::orderBy('nama', 'desc')
+        $kategori = kategori::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'desc')
             ->get();
-        $tahap = tahap::orderBy('nama', 'desc')
+        $tahap = tahap::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'asc')
             ->get();
 
         return view('surat_masuk.form_edit', compact('suratMasuk', 'unit', 'kategori', 'tahap'));
