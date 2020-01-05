@@ -92,6 +92,11 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             </tr>
                         </thead>
                         <tbody>
+                            @if(count($suratMasuk) == 0)
+                                <tr>
+                                    <td colspan="8" align="center"><b>Tidak ada data untuk ditampilkan</b></td>
+                                </tr>
+                            @endif
                             @foreach($suratMasuk as $item)
                                 <tr>
                                     <td>{{ $item->nomor }}</td>
