@@ -6,52 +6,29 @@ Dashboard | Aplikasi Manajemen Surat
 
 @section('content')
 <style type="text/css">
-    /* Remove default bullets */
-    ul, #myUL {
-      list-style-type: none;
-    }
+.just-padding {
+    padding: 15px;
+}
 
-    /* Remove margins and padding from the parent ul */
-    #myUL {
-      margin: 0;
-      padding: 0;
-    }
+.list-group.list-group-root {
+    padding: 0;
+}
 
-    /* Style the caret/arrow */
-    .caret {
-      cursor: pointer;
-      user-select: none; /* Prevent text selection */
-    }
+.list-group.list-group-root .list-group {
+    margin-bottom: 0;
+}
 
-    /* Create the caret/arrow with a unicode, and style it */
-    .caret::before {
-      content: "\25B6";
-      color: black;
-      display: inline-block;
-      margin-right: 1px;
-    }
+.list-group.list-group-root > .list-group > .list-group-item {
+    padding-left: 50px;
+}
 
-    .bullets::before {
-      content: "\2022";
-      color: black;
-      display: inline-block;
-      margin-right: 5px;
-    }
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+    padding-left: 100px;
+}
 
-    /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-    .caret-down::before {
-      transform: rotate(90deg);
-    }
-
-    /* Hide the nested list */
-    .nested {
-      display: none;
-    }
-
-    /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-    .active {
-      display: block;
-    }
+.list-group-item .fa {
+    margin-right: 5px;
+}
 </style>
 <div class="container">
     <div class="row">
@@ -59,79 +36,42 @@ Dashboard | Aplikasi Manajemen Surat
         <div class="card">
         <div class="card-body">
             <h3 class="card-title">
-                Halaman Awal
+                Dokumen Mitra Perangkat Daerah
             </h3>
             <hr />
             <div class="row">
-                <div class="col-md-4" style="border-right: 1px solid black;">
-                    <ul id="myUL">
-                        <li><span class="caret">Perangkat Daerah</span>
-                            <ul class="nested">
-                                @foreach($unit as $item)
-                                    <li><span class="caret">{{ $item->nama }}</span>
-                                        <ul class="nested">
-                                            @foreach($kategori as $datum)
-                                                @if($datum->jenis == 'Perangkat Daerah')
-                                                <a href="{{ url('?filter_unit='. $item->id .'&filter_kategori='. $datum->id) }}">
-                                                    <li><span class="bullets">{{ $datum->nama }}</span></li>
-                                                </a>
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                    </li>
+                <div class="col-md-12">
+                    <div class="just-padding">
+                        <div class="list-group list-group-root well">
+                        @php $i = 0; @endphp
+                        @foreach($unit as $unit_item)
+                            @php $i++; @endphp
+                            <a href="#item-{{ $i }}" class="list-group-item" data-toggle="collapse">
+                                <i class="fa fa-chevron-right"></i> {{ $unit_item->nama }}
+                            </a>
+                            <div class="list-group collapse" id="item-{{ $i }}">
+                                @php $j = 0; @endphp
+                                @foreach($jenis as $jenis_item)
+                                    @php $j++; @endphp
+                                <a href="#item-{{ $i .'-'. $j }}" class="list-group-item" data-toggle="collapse">
+                                    <i class="fa fa-chevron-right"></i> {{ $jenis_item }}
+                                </a>
+                                <div class="list-group collapse" id="item-{{ $i .'-'. $j }}">
+                                    @foreach($kategori as $kategori_item)
+                                        @if($kategori_item->jenis == $jenis_item)
+                                        <a href="{{ url('surat-masuk?filter_unit='. $unit_item->id .'&filter_kategori='. $kategori_item->id) }}" class="list-group-item">
+                                            <i class="fa fa-minus"></i>{{ $kategori_item->nama }}
+                                        </a>
+                                        @endif
+                                    @endforeach
+                                </div>
                                 @endforeach
-                            </ul>
-                        </li>
-                        <li><span class="caret">Surat Masuk</span>
-                            <ul class="nested">
-                                @foreach($kategori as $datum)
-                                    @if($datum->jenis == 'Surat Masuk')
-                                    <a href="{{ url('?filter_kategori='. $datum->id) }}">
-                                        <li><span class="bullets">{{ $datum->nama }}</span></li>
-                                    </a>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li><span class="caret">Telaah Staf</span>
-                            <ul class="nested">
-                                @foreach($kategori as $datum)
-                                    @if($datum->jenis == 'Telaah Staf')
-                                    <a href="{{ url('?filter_kategori='. $datum->id) }}">
-                                        <li><span class="bullets">{{ $datum->nama }}</span></li>
-                                    </a>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li><span class="caret">Petunjuk / Arahan</span>
-                            <ul class="nested">
-                                @foreach($kategori as $datum)
-                                    @if($datum->jenis == 'Petunjuk / Arahan')
-                                    <a href="{{ url('?filter_kategori='. $datum->id) }}">
-                                        <li><span class="bullets">{{ $datum->nama }}</span></li>
-                                    </a>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li><span class="caret">Surat Keluar</span>
-                            <ul class="nested">
-                                @foreach($kategori as $datum)
-                                    @if($datum->jenis == 'Surat Keluar')
-                                    <a href="{{ url('?filter_kategori='. $datum->id) }}">
-                                        <li><span class="bullets">{{ $datum->nama }}</span></li>
-                                    </a>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                        <a href="{{ url('agenda.xlsx') }}">
-                        <li><span class="bullets">Agenda Kerja</span></li>
-                        </a>
-                    </ul>
+                            </div>
+                        @endforeach
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" hidden="">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -175,15 +115,18 @@ Dashboard | Aplikasi Manajemen Surat
     </div>
 </div>
 
-<script type="text/javascript">
-    var toggler = document.getElementsByClassName("caret");
-var i;
+@endsection
 
-for (i = 0; i < toggler.length; i++) {
-  toggler[i].addEventListener("click", function() {
-    this.parentElement.querySelector(".nested").classList.toggle("active");
-    this.classList.toggle("caret-down");
+@section('js')
+<script type="text/javascript">
+$(function() {
+        
+  $('.list-group-item').on('click', function() {
+    $('.fa', this)
+      .toggleClass('fa-chevron-right')
+      .toggleClass('fa-chevron-down');
   });
-}
+
+});
 </script>
 @endsection

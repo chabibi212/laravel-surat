@@ -30,11 +30,53 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         </button>
                     </div>
                 @endif
-                <p>
+                <div>
+                    <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <select
+                            name="filter_unit"
+                            id="filter_unit"
+                            class="form-control"
+                            style="width: 200px"
+                        >
+                            <option value="">--- Filter Unit ---</option>
+                            @foreach($unit as $item)
+                                <option value="{{ $item->id }}" {{ $filter_unit == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <select
+                            name="filter_kategori"
+                            id="filter_kategori"
+                            class="form-control"
+                            style="width: 300px"
+                        >
+                            <option value="">--- Filter Kategori ---</option>
+                            @foreach($jenis as $jenis_item)
+                                <optgroup label="{{ $jenis_item }}">
+                                    @foreach($kategori as $item)
+                                    @if($item->jenis == $jenis_item)
+                                        <option value="{{ $item->id }}" {{ $filter_kategori == $item->id ? 'selected' : '' }}>{{ $item->jenis .'-'. $item->nama }}</option>
+                                    @endif
+                                    @endforeach
+                                </optgroup>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="text" name="filter_text" class="form-control" placeholder="Masukkan kata kunci" style="width: 300px" value="{{ $filter_text }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Tampilkan</button>
+                    </form>
+                </div>
+                <hr/>
+                <div>
                     <a href="{{ url('/surat-masuk/form-tambah') }}" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Tambah Dokumen
                     </a>
-                </p>
+                </div>
+                <hr/>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>

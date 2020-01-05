@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Services\LampiranFileService;
 use App\Http\Requests\SuratMasukRequest;
 use Auth;
+use DB;
 
 class SuratMasukController extends Controller
 {
@@ -30,13 +31,51 @@ class SuratMasukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filter_unit = $request->filter_unit;
+        $filter_kategori = $request->filter_kategori;
+        $filter_text = strtolower($request->filter_text);
+
         $suratMasuk = SuratMasuk::with('unit', 'kategori', 'tahap')
+            ->where(function($q) use($filter_unit, $filter_kategori, $filter_text){
+                if($filter_unit){
+                    $q->where('unit_id', $filter_unit);
+                }
+                if($filter_kategori){
+                    $q->where('kategori_id', $filter_kategori);
+                }
+                if($filter_text){
+                    $q->whereRaw(DB::raw("(
+                        LOWER(nomor) LIKE '%".$filter_text."%'
+                        OR LOWER(perihal) LIKE '%".$filter_text."%'
+                    )"));
+                }
+            })
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
-        return view('surat_masuk.surat_masuk', compact('suratMasuk'));
+        $jenis = [
+            "Dokumen Perencanaan", 
+            "Surat Masuk", 
+            "Petunjuk / Arahan", 
+            "Telaah Staf", 
+            "Surat Keluar", 
+            "Agenda Bidang"
+        ];
+
+        $unit = unit::orderBy('id', 'asc')
+            ->get();
+            
+        $kategori = kategori::orderBy('jenis', 'asc')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $tahap = tahap::orderBy('jenis', 'asc')
+            ->orderBy('nama', 'asc')
+            ->get();
+
+        return view('surat_masuk.surat_masuk', compact('filter_unit','filter_kategori','filter_text','suratMasuk','jenis','unit', 'kategori', 'tahap'));
     }
 
     /**

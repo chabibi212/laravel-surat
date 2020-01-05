@@ -41,18 +41,27 @@ class DashboardController extends Controller
             })
             ->paginate(5);
 
-        $unit = unit::orderBy('nama', 'asc')
+        $jenis = [
+            "Dokumen Perencanaan", 
+            "Surat Masuk", 
+            "Petunjuk / Arahan", 
+            "Telaah Staf", 
+            "Surat Keluar", 
+            "Agenda Bidang"
+        ];
+
+        $unit = unit::orderBy('id', 'asc')
             ->get();
             
         $kategori = kategori::orderBy('jenis', 'asc')
-            ->orderBy('nama', 'asc')
+            ->orderBy('id', 'asc')
             ->get();
 
         $tahap = tahap::orderBy('jenis', 'asc')
             ->orderBy('nama', 'asc')
             ->get();
 
-        return view('dashboard', compact('filter_jenis','filter_unit','filter_kategori','filter_tahap','suratMasuk','unit', 'kategori', 'tahap'));
+        return view('dashboard', compact('filter_jenis','filter_unit','filter_kategori','filter_tahap','suratMasuk','jenis','unit', 'kategori', 'tahap'));
     }
 
     /**

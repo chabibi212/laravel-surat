@@ -47,12 +47,12 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                     Jenis
                                 </label>
                                 <select name="jenis" class="form-control">
-                                    <option value="Perangkat Daerah">Perangkat Daerah</option>
+                                    <option value="Dokumen Perencanaan">Dokumen Perencanaan</option>
                                     <option value="Surat Masuk">Surat Masuk</option>
-                                    <option value="Telaah Staf">Telaah Staf</option>
                                     <option value="Petunjuk / Arahan">Petunjuk / Arahan</option>
+                                    <option value="Telaah Staf">Telaah Staf</option>
                                     <option value="Surat Keluar">Surat Keluar</option>
-                                    <option value="Agenda Kerja">Agenda Kerja</option>
+                                    <option value="Agenda Bidang">Agenda Bidang</option>
                                 </select>
                             </div>
                         </div>
