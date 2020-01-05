@@ -7,6 +7,7 @@ use App\Models\Unit;
 use App\Models\Kategori;
 use App\Models\Tahap;
 use Illuminate\Http\Request;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -17,6 +18,9 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
+        $role = Auth::guard('pengguna')->User()->role;
+        $unit_id = Auth::guard('pengguna')->User()->unit_id;
+
         $filter_jenis = $request->filter_jenis;
         $filter_unit = $request->filter_unit;
         $filter_kategori = $request->filter_kategori;
@@ -51,6 +55,11 @@ class DashboardController extends Controller
         ];
 
         $unit = unit::orderBy('id', 'asc')
+            ->where(function($q) use($role, $unit_id){
+                if($role == 'Staf'){
+                    $q->where('id', $unit_id);
+                }
+            })
             ->get();
             
         $kategori = kategori::orderBy('jenis', 'asc')

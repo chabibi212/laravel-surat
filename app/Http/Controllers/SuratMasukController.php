@@ -33,6 +33,9 @@ class SuratMasukController extends Controller
      */
     public function index(Request $request)
     {
+        $role = Auth::guard('pengguna')->User()->role;
+        $unit_id = Auth::guard('pengguna')->User()->unit_id;
+
         $filter_unit = $request->filter_unit;
         $filter_kategori = $request->filter_kategori;
         $filter_text = strtolower($request->filter_text);
@@ -65,6 +68,11 @@ class SuratMasukController extends Controller
         ];
 
         $unit = unit::orderBy('id', 'asc')
+            ->where(function($q) use($role, $unit_id){
+                if($role == 'Staf'){
+                    $q->where('id', $unit_id);
+                }
+            })
             ->get();
             
         $kategori = kategori::orderBy('jenis', 'asc')
@@ -85,7 +93,15 @@ class SuratMasukController extends Controller
      */
     public function create()
     {
+        $role = Auth::guard('pengguna')->User()->role;
+        $unit_id = Auth::guard('pengguna')->User()->unit_id;
+
         $unit = unit::orderBy('nama', 'asc')
+            ->where(function($q) use($role, $unit_id){
+                if($role == 'Staf'){
+                    $q->where('id', $unit_id);
+                }
+            })
             ->get();
         $kategori = kategori::orderBy('jenis', 'asc')
             ->orderBy('nama', 'desc')
@@ -172,10 +188,17 @@ class SuratMasukController extends Controller
      */
     public function edit($id)
     {
+        $role = Auth::guard('pengguna')->User()->role;
+        $unit_id = Auth::guard('pengguna')->User()->unit_id;
         $checkSuratMasuk = SuratMasuk::findOrFail($id);
         $suratMasuk = $checkSuratMasuk;
 
         $unit = unit::orderBy('nama', 'asc')
+            ->where(function($q) use($role, $unit_id){
+                if($role == 'Staf'){
+                    $q->where('id', $unit_id);
+                }
+            })
             ->get();
         $kategori = kategori::orderBy('jenis', 'asc')
             ->orderBy('nama', 'desc')
