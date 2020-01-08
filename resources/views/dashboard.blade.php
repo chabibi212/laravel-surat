@@ -40,6 +40,14 @@ Dashboard | Aplikasi Manajemen Surat
             </h3>
             <hr />
             <div class="row">
+                <div class="col-md-12" style="padding-left: 30px;">
+                    <form class="form-inline" method="GET" action="{{ url('surat-masuk') }}">
+                        <div class="form-group mb-2">
+                            <input type="text" name="filter_text" class="form-control" placeholder="Masukkan kata kunci" style="width: 400px">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Tampilkan</button>
+                    </form>
+                </div>
                 <div class="col-md-12">
                     <div class="just-padding">
                         <div class="list-group list-group-root well">
