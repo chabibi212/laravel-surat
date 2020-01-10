@@ -110,15 +110,15 @@ $months = [
                         @if($kategori_item->nama == 'DOKUMEN RPJMD')
                         <a
                             href="{{ url('uploads/documents/surat-masuk/rpjmd_jatim_2019_2024_official.pdf') }}"
-                            class="btn btn-sm btn-primary text-white"
-                            target="_blank"
-                        >
+                            class="list-group-item" target="_blank">
+                            <i class="fa fa-chevron-right"></i> {{ $kategori_item->nama }}
+                        </a>
                         @elseif($kategori_item->nama == 'DOKUMEN RKPD')
                         <a
                             href="{{ url('uploads/documents/surat-masuk/rkpd_jatim_2020.pdf') }}"
-                            class="btn btn-sm btn-primary text-white"
-                            target="_blank"
-                        >
+                            class="list-group-item" target="_blank">
+                            <i class="fa fa-chevron-right"></i> {{ $kategori_item->nama }}
+                        </a>
                         @else
                         @php $i++; @endphp
                         <a href="#item-{{ $i }}" class="list-group-item" data-toggle="collapse">
