@@ -38,10 +38,12 @@ class SuratMasukController extends Controller
 
         $filter_unit = $request->filter_unit;
         $filter_kategori = $request->filter_kategori;
+        $filter_year = $request->filter_year;
+        $filter_month = $request->filter_month;
         $filter_text = strtolower($request->filter_text);
 
         $suratMasuk = SuratMasuk::with('unit', 'kategori', 'tahap')
-            ->where(function($q) use($filter_unit, $filter_kategori, $filter_text){
+            ->where(function($q) use($filter_unit, $filter_kategori, $filter_text, $filter_year, $filter_month){
                 if($filter_unit){
                     $q->where('unit_id', $filter_unit);
                 }
@@ -54,17 +56,24 @@ class SuratMasukController extends Controller
                         OR LOWER(perihal) LIKE '%".$filter_text."%'
                     )"));
                 }
+                if($filter_year){
+                    $q->whereRaw(DB::raw("(
+                        DATE_FORMAT(tanggal_terima,'%Y') = '".$filter_year."'
+                    )"));
+                }
+                if($filter_month){
+                    $q->whereRaw(DB::raw("(
+                        DATE_FORMAT(tanggal_terima,'%m') = '".$filter_month."'
+                    )"));
+                }
             })
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
         $jenis = [
-            "Dokumen Perencanaan", 
-            "Surat Masuk", 
-            "Petunjuk / Arahan", 
-            "Telaah Staf", 
-            "Surat Keluar", 
-            "Agenda Bidang"
+            "Dokumen", 
+            "Persuratan I", 
+            "Persuratan II",
         ];
 
         $unit = unit::orderBy('id', 'asc')
@@ -83,7 +92,7 @@ class SuratMasukController extends Controller
             ->orderBy('nama', 'asc')
             ->get();
 
-        return view('surat_masuk.surat_masuk', compact('filter_unit','filter_kategori','filter_text','suratMasuk','jenis','unit', 'kategori', 'tahap'));
+        return view('surat_masuk.surat_masuk', compact('filter_year','filter_unit','filter_kategori','filter_text','suratMasuk','jenis','unit', 'kategori', 'tahap'));
     }
 
     /**

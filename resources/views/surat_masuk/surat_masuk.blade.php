@@ -65,7 +65,20 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                         </select>
                     </div>
                     <div class="form-group mb-2">
-                        <input type="text" name="filter_text" class="form-control" placeholder="Masukkan kata kunci" style="width: 300px" value="{{ $filter_text }}">
+                        <select
+                            name="filter_year"
+                            id="filter_year"
+                            class="form-control"
+                            style="width: 100px"
+                        >
+                            <option value="">--- Filter Year ---</option>
+                            @for($y=2019;$y<=date('Y');$y++)
+                                <option value="{{ $y }}" {{ $filter_year == $y ? 'selected' : '' }}>{{ $y }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="text" name="filter_text" class="form-control" placeholder="Masukkan kata kunci" style="width: 250px" value="{{ $filter_text }}">
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Tampilkan</button>
                     </form>

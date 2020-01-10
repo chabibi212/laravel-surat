@@ -46,12 +46,9 @@ class DashboardController extends Controller
             ->paginate(5);
 
         $jenis = [
-            "Dokumen Perencanaan", 
-            "Surat Masuk", 
-            "Petunjuk / Arahan", 
-            "Telaah Staf", 
-            "Surat Keluar", 
-            "Agenda Bidang"
+            "Dokumen", 
+            "Persuratan I", 
+            "Persuratan II",
         ];
 
         $unit = unit::orderBy('id', 'asc')

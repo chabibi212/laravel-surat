@@ -47,12 +47,9 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                     Jenis
                                 </label>
                                 <select name="jenis" class="form-control">
-                                    <option value="Dokumen Perencanaan">Dokumen Perencanaan</option>
-                                    <option value="Surat Masuk">Surat Masuk</option>
-                                    <option value="Petunjuk / Arahan">Petunjuk / Arahan</option>
-                                    <option value="Telaah Staf">Telaah Staf</option>
-                                    <option value="Surat Keluar">Surat Keluar</option>
-                                    <option value="Agenda Bidang">Agenda Bidang</option>
+                                    <option value="Dokumen">Dokumen</option>
+                                    <option value="Persuratan I">Persuratan I</option>
+                                    <option value="Persuratan II">Persuratan II</option>
                                 </select>
                             </div>
                         </div>

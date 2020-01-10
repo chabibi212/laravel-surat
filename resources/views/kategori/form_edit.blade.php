@@ -52,12 +52,9 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                     Jenis
                                 </label>
                                 <select name="jenis" class="form-control">
-                                    <option value="Perangkat Daerah" {{ $kategori->jenis == 'Perangkat Daerah' ? 'selected' : '' }}>Perangkat Daerah</option>
-                                    <option value="Surat Masuk" {{ $kategori->jenis == 'Surat Masuk' ? 'selected' : '' }}>Surat Masuk</option>
-                                    <option value="Telaah Staf" {{ $kategori->jenis == 'Telaah Staf' ? 'selected' : '' }}>Telaah Staf</option>
-                                    <option value="Petunjuk / Arahan" {{ $kategori->jenis == 'Petunjuk / Arahan' ? 'selected' : '' }}>Petunjuk / Arahan</option>
-                                    <option value="Surat Keluar" {{ $kategori->jenis == 'Surat Keluar' ? 'selected' : '' }}>Surat Keluar</option>
-                                    <option value="Agenda Kerja" {{ $kategori->jenis == 'Agenda Kerja' ? 'selected' : '' }}>Agenda Kerja</option>
+                                    <option value="Dokumen" {{ $kategori->jenis == 'Dokumen' ? 'selected' : '' }}>Dokumen</option>
+                                    <option value="Persuratan I" {{ $kategori->jenis == 'Persuratan I' ? 'selected' : '' }}>Persuratan I</option>
+                                    <option value="Persuratan II" {{ $kategori->jenis == 'Persuratan II' ? 'selected' : '' }}>Persuratan II</option>
                                 </select>
                             </div>
                         </div>
