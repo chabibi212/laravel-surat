@@ -107,10 +107,18 @@ $months = [
                     @php $i = 0; @endphp
                     @foreach($kategori as $kategori_item)
                         @if($jenis_item == $kategori_item->jenis)
-                        @if(in_array($kategori_item->nama, ['DOKUMEN RPJMD', 'DOKUMEN RKPD']) )
-                            <a href="{{ url('surat-masuk?filter_kategori='. $kategori_item->id) }}" class="list-group-item">
-                                <i class="fa fa-chevron-right"></i>{{ $kategori_item->nama }}
-                            </a>
+                        @if($kategori_item->nama == 'DOKUMEN RPJMD')
+                        <a
+                            href="{{ url('uploads/documents/surat-masuk/rpjmd_jatim_2019_2024_official.pdf') }}"
+                            class="btn btn-sm btn-primary text-white"
+                            target="_blank"
+                        >
+                        @elseif($kategori_item->nama == 'DOKUMEN RKPD')
+                        <a
+                            href="{{ url('uploads/documents/surat-masuk/rkpd_jatim_2020.pdf') }}"
+                            class="btn btn-sm btn-primary text-white"
+                            target="_blank"
+                        >
                         @else
                         @php $i++; @endphp
                         <a href="#item-{{ $i }}" class="list-group-item" data-toggle="collapse">
