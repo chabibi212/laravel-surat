@@ -110,7 +110,7 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="tujuan-tahap">
@@ -134,17 +134,17 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 @endif
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
-                                <label for="tahap_id">
+                                <label for="status_id">
                                     Status *
                                 </label>
                                 <select
-                                    name="tahap_id"
-                                    id="tahap_id"
-                                    class="form-control {{ $errors->has('kategori_id') ? ' is-invalid' : '' }}"
+                                    name="status_id"
+                                    id="status_id"
+                                    class="form-control {{ $errors->has('status_id') ? ' is-invalid' : '' }}"
                                 >
                                     <option value="Valid" {{ ($suratMasuk->status == 'Valid') ? 'selected' : '' }}>
                                         Valid

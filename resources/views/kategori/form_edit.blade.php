@@ -53,8 +53,8 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                 </label>
                                 <select name="jenis" class="form-control">
                                     <option value="Dokumen" {{ $kategori->jenis == 'Dokumen' ? 'selected' : '' }}>Dokumen</option>
-                                    <option value="Persuratan I" {{ $kategori->jenis == 'Persuratan I' ? 'selected' : '' }}>Persuratan I</option>
-                                    <option value="Persuratan II" {{ $kategori->jenis == 'Persuratan II' ? 'selected' : '' }}>Persuratan II</option>
+                                    <option value="Surat Rangga" {{ $kategori->jenis == 'Surat Rangga' ? 'selected' : '' }}>Surat Rangga</option>
+                                    <option value="Surat Harian" {{ $kategori->jenis == 'Surat Harian' ? 'selected' : '' }}>Surat Harian</option>
                                 </select>
                             </div>
                         </div>

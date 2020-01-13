@@ -115,7 +115,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             </div>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <!--
+                    <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <label for="tahap_id">
@@ -142,7 +143,8 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 @endif
                             </div>
                         </div>
-                    </div>
+                        </div>
+                    -->
                      <div class="form-group">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-xs-12">

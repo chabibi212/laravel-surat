@@ -38,11 +38,11 @@
                     <i class="fa fa-folder"></i> Kategori
                 </a>
             </li>
-            <li class="nav-item {{ Request::segment(1) == 'tahap' ? 'active' : '' }}">
+            <!--<li class="nav-item {{ Request::segment(1) == 'tahap' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/tahap') }}">
                     <i class="fa fa-sort"></i> Tahap
                 </a>
-            </li>
+            </li>-->
             <li class="nav-item {{ Request::segment(1) == 'pengguna' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/pengguna') }}">
                     <i class="fa fa-users"></i> Pengguna

@@ -72,8 +72,8 @@ class SuratMasukController extends Controller
 
         $jenis = [
             "Dokumen", 
-            "Persuratan I", 
-            "Persuratan II",
+            "Surat Rangga", 
+            "Surat Harian",
         ];
 
         $unit = unit::orderBy('id', 'asc')
@@ -135,7 +135,7 @@ class SuratMasukController extends Controller
         $asal = '-';
         $unitID = $suratMasukRequest->unit_id;
         $kategoriID = $suratMasukRequest->kategori_id;
-        $tahapID = $suratMasukRequest->tahap_id;
+        $tahapID = 1;
         $perihal = $suratMasukRequest->perihal;
         $tanggalSurat = $suratMasukRequest->tanggal_surat;
         $tanggalTerima = $suratMasukRequest->tanggal_terima;
@@ -230,7 +230,6 @@ class SuratMasukController extends Controller
     {
         # set variable
         $nomor = $suratMasukRequest->nomor;
-        $asal = $suratMasukRequest->asal;
         $unitID = $suratMasukRequest->unit_id;
         $kategoriID = $suratMasukRequest->kategori_id;
         $perihal = $suratMasukRequest->perihal;
@@ -262,7 +261,6 @@ class SuratMasukController extends Controller
                 'unit_id' => $unitID,
                 'kategori_id' => $kategoriID,
                 'nomor' => $nomor,
-                'asal' => $asal,
                 'perihal' => $perihal,
                 'tanggal_terima' => $tanggalTerima,
                 'lampiran' => $lampiranFileName

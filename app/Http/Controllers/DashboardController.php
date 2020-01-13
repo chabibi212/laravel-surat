@@ -47,8 +47,8 @@ class DashboardController extends Controller
 
         $jenis = [
             "Dokumen", 
-            "Persuratan I", 
-            "Persuratan II",
+            "Surat Rangga", 
+            "Surat Harian",
         ];
 
         $unit = unit::orderBy('id', 'asc')

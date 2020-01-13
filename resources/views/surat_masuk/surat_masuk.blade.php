@@ -99,7 +99,6 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                 <th scope="col">Tanggal Surat</th>
                                 <th scope="col">Tanggal Diterima</th>
                                 <th scope="col">Kategori</th>
-                                <th scope="col">Tahap</th>
                                 <th scope="col">Perihal</th>
                                 <th scope="col">Opsi</th>
                             </tr>
@@ -117,7 +116,6 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_surat)) }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_terima)) }}</td>
                                     <td>{{ @$item->kategori->nama }}</td>
-                                    <td>{{ @$item->tahap->nama }}</td>
                                     <td>{{ $item->perihal }}</td>
                                     <td>
                                         <a

@@ -48,8 +48,8 @@ Dashboard &raquo; kategori | Aplikasi Manajemen Surat
                                 </label>
                                 <select name="jenis" class="form-control">
                                     <option value="Dokumen">Dokumen</option>
-                                    <option value="Persuratan I">Persuratan I</option>
-                                    <option value="Persuratan II">Persuratan II</option>
+                                    <option value="Surat Rangga">Surat Rangga</option>
+                                    <option value="Surat Harian">Surat Harian</option>
                                 </select>
                             </div>
                         </div>

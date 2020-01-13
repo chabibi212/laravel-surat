@@ -82,19 +82,19 @@ $months = [
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-4 icon_dashboard" data-id="persuratan_i" style="cursor: pointer;">
+                <div class="col-sm-4 col-md-4 icon_dashboard" data-id="surat_rangga" style="cursor: pointer;">
                     <div class="thumbnail" style="text-align: center;">
-                        <img src="{{ url('/assets/img/mail1.png') }}" alt="Persuratan I">
+                        <img src="{{ url('/assets/img/mail1.png') }}" alt="Surat Rangga">
                             <div class="caption">
-                            <h4>Persuratan I</h4>
+                            <h4>Surat Rangga</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-4 icon_dashboard" data-id="persuratan_ii" style="cursor: pointer;">
+                <div class="col-sm-4 col-md-4 icon_dashboard" data-id="surat_harian" style="cursor: pointer;">
                     <div class="thumbnail" style="text-align: center;">
-                        <img src="{{ url('/assets/img/mail2.png') }}" alt="Persuratan II">
+                        <img src="{{ url('/assets/img/mail2.png') }}" alt="Surat Harian">
                             <div class="caption">
-                            <h4>Persuratan II</h4>
+                            <h4>Surat Harian</h4>
                         </div>
                     </div>
                 </div>
