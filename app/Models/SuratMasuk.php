@@ -9,18 +9,18 @@ class SuratMasuk extends Model
     protected $table = 'surat_masuk';
 
     protected $fillable = [
-            'unit_id',
-            'tahap_id',
             'kategori_id',
+            'jenis',
+            'unit_id',
             'nomor',
-            'asal',
             'perihal',
             'tanggal_surat',
             'tanggal_terima',
             'lampiran',
-            'status' ,
-            'pengguna_id',
-            'tahap_id',
+            'ttd' ,
+            'disposisi',
+            'disposisi_telaah',
+            'telaah',
         ];
 
     protected $dates = [

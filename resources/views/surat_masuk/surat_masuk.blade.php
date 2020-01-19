@@ -94,13 +94,17 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Nomor</th>
-                                <th scope="col">Unit Asal</th>
+                                <th scope="col">Jenis</th>
+                                <th scope="col">Perangkat Daerah</th>
                                 <th scope="col">Tanggal Surat</th>
+                                <th scope="col">Nomor</th>
                                 <th scope="col">Tanggal Diterima</th>
-                                <th scope="col">Kategori</th>
                                 <th scope="col">Perihal</th>
-                                <th scope="col">Opsi</th>
+                                <th scope="col">Yang Bertandatangan</th>
+                                <th scope="col">Disposisi/ Arahan/ Petunjuk</th>
+                                <th scope="col">Telaah Staf</th>
+                                <th scope="col">Disposisi/ Arahan/ Petunjuk atas Telaah Staf</th>
+                                <th scope="col">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,12 +115,24 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                             @endif
                             @foreach($suratMasuk as $item)
                                 <tr>
-                                    <td>{{ $item->nomor }}</td>
+                                    <td>{{ $item->jenis }}</td>
                                     <td>{{ @$item->unit->nama }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_surat)) }}</td>
+                                    <td>{{ @$item->nomor }}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->tanggal_terima)) }}</td>
-                                    <td>{{ @$item->kategori->nama }}</td>
                                     <td>{{ $item->perihal }}</td>
+                                    <td>{{ $item->ttd }}</td>
+                                    <td>{{ $item->disposisi }}</td>
+                                    <td>
+                                        <a
+                                            href="{{ url('uploads/documents/surat-masuk/'. $item->telaah) }}"
+                                            class="btn btn-sm btn-primary text-white"
+                                            target="_blank"
+                                        >
+                                            <i class="fa fa-file"></i> Lihat
+                                        </a>
+                                    </td>
+                                    <td>{{ $item->disposisi_telaah }}</td>
                                     <td>
                                         <a
                                             href="{{ url('uploads/documents/surat-masuk/'. $item->lampiran) }}"
@@ -125,12 +141,12 @@ Dashboard &raquo; Surat Masuk | Aplikasi Manajemen Surat
                                         >
                                             <i class="fa fa-file"></i> Lihat
                                         </a>
-                                        <a
+                                        <!--<a
                                             href="{{ url('/surat-masuk/form-ubah/'. $item->id) }}"
                                             class="btn btn-sm btn-warning text-white"
                                         >
                                             <i class="fa fa-edit"></i> Ubah
-                                        </a>
+                                        </a>-->
                                         <a
                                             href="{{ url('/surat-masuk/hapus/'. $item->id) }}"
                                             class="btn btn-sm btn-danger"

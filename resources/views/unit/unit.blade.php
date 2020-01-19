@@ -11,7 +11,7 @@ Dashboard &raquo; unit | Aplikasi Manajemen Surat
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">
-                    Unit
+                    Perangkat Daerah
                 </h3>
                 <hr />
                 @if(session('notification'))

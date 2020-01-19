@@ -128,42 +128,37 @@ class SuratMasukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SuratMasukRequest $suratMasukRequest)
+    public function store(SuratMasukRequest $request)
     {
-        # set variable
-        $nomor = $suratMasukRequest->nomor;
-        $asal = '-';
-        $unitID = $suratMasukRequest->unit_id;
-        $kategoriID = $suratMasukRequest->kategori_id;
-        $tahapID = 1;
-        $perihal = $suratMasukRequest->perihal;
-        $tanggalSurat = $suratMasukRequest->tanggal_surat;
-        $tanggalTerima = $suratMasukRequest->tanggal_terima;
-        $lampiranFile = $suratMasukRequest->lampiran;
+        $telaahFile = $request->telaah;
+        $telaahFileName = 'telaah_'. date('YmdHis');
+        $telaahFileExtension = $telaahFile->getClientOriginalExtension();
+        $telaahFileName = $telaahFileName.'.'.$telaahFileExtension;
 
-        $findkategoriEmail = kategori::find($kategoriID);
-        $kategoriEmail = $findkategoriEmail->email;
-        $kategoriName = $findkategoriEmail->nama;
-
-        $lampiranFileName = 'masuk_'. date('YmdHis');
+        $lampiranFile = $request->lampiran;
+        $lampiranFileName = 'dokumen_'. date('YmdHis');
         $lampiranFileExtension = $lampiranFile->getClientOriginalExtension();
-
         $lampiranFileName = $lampiranFileName.'.'.$lampiranFileExtension;
 
         # set array data
         $data = [
-            'unit_id' => $unitID,
-            'tahap_id' => $tahapID,
-            'kategori_id' => $kategoriID,
-            'nomor' => $nomor,
-            'asal' => $asal,
-            'perihal' => $perihal,
-            'tanggal_terima' => $tanggalTerima,
-            'tanggal_surat' => $tanggalSurat,
-            'lampiran' => $lampiranFileName,
-            'pengguna_id' => Auth::guard('pengguna')->User()->id,
-            'status_email' => 'Terkirim'
+            'kategori_id' => $request->kategori_id,
+            'jenis' => $request->jenis,
+            'nomor' => $request->nomor,
+            'unit_id' => $request->unit_id,
+            'tanggal_surat' => $request->tanggal_surat,
+            'tanggal_terima' => $request->tanggal_terima,
+            'perihal' => $request->perihal,
+            'ttd' => $request->ttd,
+            'disposisi' => $request->disposisi,
+            'telaah' => $telaahFileName,
+            'disposisi_telaah' => $request->disposisi_telaah,
+            'lampiran' => $lampiranFileName
         ];
+
+        $uploadTelaahFile = $this
+            ->lampiranFileServe
+            ->uploadLampiranFile($telaahFile, $telaahFileName);
 
         $uploadLampiranFile = $this
             ->lampiranFileServe

@@ -30,7 +30,7 @@
           @if(Auth::guard('pengguna')->User()->role == "Super Admin")
             <li class="nav-item {{ Request::segment(1) == 'unit' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('/unit') }}">
-                    <i class="fa fa-building"></i> Unit
+                    <i class="fa fa-building"></i> Perangkat Daerah
                 </a>
             </li>
             <li class="nav-item {{ Request::segment(1) == 'kategori' ? 'active' : '' }}">

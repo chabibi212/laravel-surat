@@ -126,20 +126,30 @@ $months = [
                         </a>
                         <div class="list-group collapse" id="item-{{ $i }}">
                             @if($jenis_item == 'Dokumen')
-                            @php $j = 0; @endphp
-                            @foreach($unit as $unit_item)
-                                @php $j++; @endphp
-                            <a href="#item-{{ $i .'-'. $j }}" class="list-group-item" data-toggle="collapse">
-                                <i class="fa fa-chevron-right"></i> {{ $unit_item->nama }}
-                            </a>
-                            <div class="list-group collapse" id="item-{{ $i .'-'. $j }}">
-                                @for($y=2019;$y<=date('Y');$y++)
-                                    <a href="{{ url('surat-masuk?filter_unit='. $unit_item->id .'&filter_kategori='. $kategori_item->id .'&filter_year='. $y) }}" class="list-group-item">
-                                        <i class="fa fa-minus"></i>{{ $y }}
+                                @if($kategori_item->nama != 'DOKUMEN RENSTRA PERANGKAT DAERAH')
+                                    @php $j = 0; @endphp
+                                    @foreach($unit as $unit_item)
+                                        @php $j++; @endphp
+                                    <a href="#item-{{ $i .'-'. $j }}" class="list-group-item" data-toggle="collapse">
+                                        <i class="fa fa-chevron-right"></i> {{ $unit_item->nama }}
                                     </a>
-                                @endfor
-                            </div>
-                            @endforeach
+                                    <div class="list-group collapse" id="item-{{ $i .'-'. $j }}">
+                                        @for($y=2019;$y<=date('Y');$y++)
+                                            <a href="{{ url('surat-masuk?filter_unit='. $unit_item->id .'&filter_kategori='. $kategori_item->id .'&filter_year='. $y) }}" class="list-group-item">
+                                                <i class="fa fa-minus"></i>{{ $y }}
+                                            </a>
+                                        @endfor
+                                    </div>
+                                    @endforeach
+                                @else
+                                    @php $j = 0; @endphp
+                                    @foreach($unit as $unit_item)
+                                        @php $j++; @endphp
+                                    <a href="{{ url('surat-masuk?filter_unit='. $unit_item->id .'&filter_kategori='. $kategori_item->id) }}" class="list-group-item">
+                                        <i class="fa fa-chevron-right"></i> {{ $unit_item->nama }}
+                                    </a>
+                                    @endforeach
+                                @endif
                             @else
 
                             @php $j = 0; @endphp
