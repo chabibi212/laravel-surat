@@ -76,7 +76,7 @@ $months = [
             <div class="row" id="icon_container">
                 <div class="col-sm-4 col-md-4 icon_dashboard" data-id="dokumen" style="cursor: pointer;">
                     <div class="thumbnail" style="text-align: center;">
-                        <img src="{{ url('/assets/img/doc.png') }}" alt="Dokumen">
+                        <img src="{{ url('/assets/img/icon_doc.jpg') }}" alt="Dokumen">
                             <div class="caption">
                             <h4>Dokumen</h4>
                         </div>
@@ -84,7 +84,7 @@ $months = [
                 </div>
                 <div class="col-sm-4 col-md-4 icon_dashboard" data-id="surat_rangga" style="cursor: pointer;">
                     <div class="thumbnail" style="text-align: center;">
-                        <img src="{{ url('/assets/img/mail1.png') }}" alt="Surat Rangga">
+                        <img src="{{ url('/assets/img/icon_rangga.jpg') }}" alt="Surat Rangga">
                             <div class="caption">
                             <h4>Surat Rangga</h4>
                         </div>
@@ -92,7 +92,7 @@ $months = [
                 </div>
                 <div class="col-sm-4 col-md-4 icon_dashboard" data-id="surat_harian" style="cursor: pointer;">
                     <div class="thumbnail" style="text-align: center;">
-                        <img src="{{ url('/assets/img/mail2.png') }}" alt="Surat Harian">
+                        <img src="{{ url('/assets/img/icon_harian.jpg') }}" alt="Surat Harian">
                             <div class="caption">
                             <h4>Surat Harian</h4>
                         </div>
